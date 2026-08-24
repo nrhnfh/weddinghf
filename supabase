@@ -1133,9 +1133,11 @@
       accountNumber: "123 456 7890",
       accountHolder: "Hanifah & Farid",
       galleryImages: [
-        "images/photo-1.jpg", "images/photo-2.jpg", "images/photo-3.jpg",
-        "images/photo-4.jpg", "images/photo-5.jpg", "images/photo-6.jpg",
-        "images/photo-7.jpg", "images/photo-8.jpg"
+       "images/1.JPG",
+      "images/2.JPG",
+      "images/4.PNG",
+      "images/5.JPG",
+      "images/6.jpg",
       ]
     };
 
