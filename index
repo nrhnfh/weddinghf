@@ -1110,7 +1110,7 @@
     // ============================================================
     //  KONFIGURASI SUPABASE - GANTI DENGAN CREDENTIALS ANDA!
     // ============================================================
-    const SUPABASE_URL = 'https://dsingkecblyqxcgxjwgp.supabase.co/rest/v1/'; // Ganti dengan URL project Anda!
+    const SUPABASE_URL = 'https://dsingkecblyqxcgxjwgp.supabase.co'; // Ganti dengan URL project Anda!
     const SUPABASE_ANON_KEY = 'sb_publishable_z6zlAxCMOSPRKmD30Rdrgg_p8DJXVI3'; // Ganti dengan publishable key Anda!
 
     // ============================================================
