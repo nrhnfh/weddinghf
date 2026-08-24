@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-  <title>Undangan Pernikahan Hanifah & Farid</title>
+  <title>Undangan Pernikahan Nurhanifah & Farid</title>
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -854,7 +854,7 @@
     <div class="cover-floral"></div>
     <div class="cover-content">
       <div class="the-wedding-of">♥ THE WEDDING OF ♥</div>
-      <h1 id="coverNames">Hanifah &amp; Farid</h1>
+      <h1 id="coverNames">Nurhanifah &amp; Farid</h1>
       <div class="date">⚘ Sabtu, 05 September 2026 ⚘</div>
       <div class="love-divider" style="margin:10px 0;"><span style="color:var(--rose);font-size:1.2rem;">♥ ♥ ♥</span></div>
       <div class="cover-guest">
@@ -870,7 +870,7 @@
 
     <!-- Navbar -->
     <nav class="navbar" id="navbar">
-      <div class="logo">♥ Hanifah &amp; Farid ♥</div>
+      <div class="logo">♥ Nurhanifah &amp; Farid ♥</div>
       <div class="nav-links">
         <a href="#hero">Home</a>
         <a href="#couple">Mempelai</a>
@@ -886,7 +886,7 @@
       <div class="hero-floral"></div>
       <div class="hero-content">
         <div class="the-wedding-of">♥ THE WEDDING OF ♥</div>
-        <h1 id="heroNames">Hanifah &amp; Farid</h1>
+        <h1 id="heroNames">Nurhanifah &amp; Farid</h1>
         <div class="date">⚘ Sabtu, 05 September 2026 ⚘</div>
         <div class="hero-ornament">
           <span class="floating-flower">⚘</span>
@@ -921,10 +921,10 @@
         </div>
         <div class="couple-grid">
           <div class="couple-card">
-            <img src="images/bride.jpg" alt="Hanifah" class="avatar"
+            <img src="images/bride.jpg" alt="Nurhanifah" class="avatar"
             onerror="this.style.display='none'; this.parentElement.innerHTML += '<div class=\'avatar\' style=\'background:#d4dce8;display:flex;align-items:center;justify-content:center;font-size:3rem;color:var(--navy);width:140px;height:140px;border-radius:50%;margin:0 auto 16px;border:4px solid var(--gold);\'>👰</div>'">
             <h3 id="brideName">Nurhanifah</h3>
-            <div class="parent">Putri dari Bapak MUhamad &amp; Ibu Surati</div>
+            <div class="parent">Putri dari Bapak Muhamad &amp; Ibu Surati</div>
             <div class="floral-ornament" style="color: var(--rose);">♥</div>
           </div>
           <div class="couple-card">
@@ -964,7 +964,7 @@
             <div class="label">⚘ Waktu ⚘</div>
             <p>11:00 - 15:00 WIB</p>
             <div class="label">♥ Lokasi ♥</div>
-            <p>Gedung Sanggita, Jakarta</p>
+            <p>Gedung Sanggita Polri, Jakarta</p>
             <a href="https://maps.google.com" target="_blank" class="btn-outline" style="margin-top:12px; display:inline-block; font-size:0.85rem; padding:8px 24px;">⚘ Buka Google Maps ⚘</a>
           </div>
         </div>
@@ -1075,7 +1075,7 @@
           <p style="color:#5a6a7a; font-family: 'Lateef', serif; font-size:1.05rem;">Kirim hadiah melalui rekening berikut:</p>
           <div class="bank">♥ Bank BCA ♥</div>
           <div class="account" id="accountNumber">123 456 7890</div>
-          <p style="font-size:0.95rem; color:#5a6a7a; font-family: 'Lateef', serif;">a.n. Hanifah &amp; Farid</p>
+          <p style="font-size:0.95rem; color:#5a6a7a; font-family: 'Lateef', serif;">a.n. Nurhanifah &amp; Farid</p>
           <button class="btn-copy" id="copyBtn">⚘ Salin Nomor Rekening ⚘</button>
           <div style="margin-top:12px; font-size:0.95rem; color: var(--gold);" id="copyFeedback"></div>
         </div>
@@ -1084,7 +1084,7 @@
 
     <!-- Footer -->
     <footer class="footer">
-      <p>♥ Undangan Pernikahan <strong>Hanifah &amp; Farid</strong> • 05 September 2026 ♥</p>
+      <p>♥ Undangan Pernikahan <strong>Nurhanifah &amp; Farid</strong> • 05 September 2026 ♥</p>
       <p style="font-size:0.75rem; margin-top:4px; opacity:0.7;">⚘ Dibuat dengan cinta • Arabic Classic Elegance ⚘</p>
     </footer>
   </div>
@@ -1110,20 +1110,24 @@
     // ============================================================
     //  KONFIGURASI SUPABASE - GANTI DENGAN CREDENTIALS ANDA!
     // ============================================================
-    const SUPABASE_URL = 'https://dsingkecblyqxcgxjwgp.supabase.co'; // Ganti dengan URL project Anda!
-    const SUPABASE_ANON_KEY = 'sb_publishable_z6zlAxCMOSPRKmD30Rdrgg_p8DJXVI3'; // Ganti dengan publishable key Anda!
+    const SUPABASE_URL = 'https://dsingkecblyqxcgxjwgp.supabase.co';
+    // PERBAIKI: huruf L besar, bukan l kecil!
+    const SUPABASE_ANON_KEY = 'sb_publishable_z6zLAxCMOSPRKmD30Rdrgg_p8DJXVI3';
+
+    console.log('🔗 Connecting to Supabase...');
+    console.log('📡 URL:', SUPABASE_URL);
 
     // ============================================================
-    //  INISIALISASI SUPABASE
+    //  INISIALISASI SUPABASE - PERBAIKAN: ganti nama variabel
     // ============================================================
-    const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
     // ============================================================
-    //  DATA PERNIKAHAN - HANIFAH & FARID
+    //  DATA PERNIKAHAN - DIPERBAIKI
     // ============================================================
     const weddingData = {
-      groomName: "Farid",
-      brideName: "Hanifah",
+      groomName: "Farid Ramadhona",
+      brideName: "Nurhanifah",
       groomParent: "Bapak Rahmat M Kapi & Ibu Aenok Pauziyah",
       brideParent: "Bapak Muhamad & Ibu Surati",
       weddingDate: "2026-09-05T09:00:00",
@@ -1131,13 +1135,14 @@
       mapsUrl: "https://maps.google.com",
       bankName: "Bank BCA",
       accountNumber: "123 456 7890",
-      accountHolder: "Hanifah & Farid",
+      accountHolder: "Nurhanifah & Farid",
+      // PERBAIKI: gunakan ekstensi huruf kecil untuk kompatibilitas
       galleryImages: [
-       "images/1.JPG",
-      "images/2.JPG",
-      "images/4.PNG",
-      "images/5.JPG",
-      "images/6.jpg",
+        "images/1.jpg",
+        "images/2.jpg",
+        "images/4.png",
+        "images/5.jpg",
+        "images/6.jpg"
       ]
     };
 
@@ -1158,7 +1163,7 @@
 
     const guestName = getGuestName();
 
-    // Render nama
+    // Render nama - PERBAIKI: gunakan Nurhanifah
     document.getElementById('guestNameCover').innerHTML = guestName;
     document.getElementById('guestNameWelcome').innerHTML = guestName;
     document.getElementById('coverNames').innerHTML = weddingData.brideName + ' &amp; ' + weddingData.groomName;
@@ -1185,7 +1190,7 @@
         commentsList.innerHTML = `
             <div style="text-align:center; color:#8a9aaa; padding:40px; font-family: 'Lateef', serif; font-size:1.1rem;">
               <div style="font-size:2.4rem; margin-bottom:8px;">💐</div>
-              Belum ada ucapan. Jadilah yang pertama untuk Hanifah & Farid!
+              Belum ada ucapan. Jadilah yang pertama untuk Nurhanifah & Farid!
             </div>
           `;
         return;
@@ -1216,7 +1221,7 @@
       try {
         loadingState.style.display = 'block';
 
-        const { data, error } = await supabase
+        const { data, error } = await supabaseClient
           .from('comments')
           .select('*')
           .order('created_at', { ascending: false });
@@ -1245,7 +1250,7 @@
       }
 
       try {
-        const { data, error } = await supabase
+        const { data, error } = await supabaseClient
           .from('comments')
           .insert([{
             name: name.trim(),
@@ -1270,9 +1275,9 @@
     }
 
     // ============================================================
-    //  REALTIME SUBSCRIPTION
+    //  REALTIME SUBSCRIPTION - PERBAIKAN: gunakan supabaseClient
     // ============================================================
-    const channel = supabase
+    const channel = supabaseClient
       .channel('comments-channel')
       .on(
         'postgres_changes', {
@@ -1372,7 +1377,7 @@
     });
 
     // ============================================================
-    //  COUNTDOWN - TARGET 05 SEPTEMBER 2026
+    //  COUNTDOWN
     // ============================================================
     function updateCountdown() {
       const target = new Date(weddingData.weddingDate).getTime();
@@ -1392,7 +1397,7 @@
     setInterval(updateCountdown, 1000);
 
     // ============================================================
-    //  GALERI
+    //  GALERI - PERBAIKI: gunakan weddingData.galleryImages
     // ============================================================
     const galleryGrid = document.getElementById('galleryGrid');
     weddingData.galleryImages.forEach(src => {
@@ -1507,9 +1512,8 @@
       });
     });
 
-    console.log('✨ Undangan Pernikahan Hanifah & Farid dengan Supabase & GitHub Pages siap!');
+    console.log('✨ Undangan Pernikahan Nurhanifah & Farid siap!');
     console.log('📅 Tanggal: 05 September 2026');
-    console.log('📁 Repository: weddinghf');
     console.log('👤 Tamu:', guestName);
   </script>
 
