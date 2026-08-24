@@ -1,0 +1,32 @@
+# supabase/config.toml
+
+[project]
+project_id = "YOUR_PROJECT_ID"  # Ganti dengan project ID Anda
+
+[api]
+enabled = true
+
+[api.schemas]
+public = "public"
+
+[api.extra_search_path]
+public = "public"
+
+[db]
+port = 5432
+shadow_port = 54320
+major_version = 15
+
+[studio]
+port = 54323
+
+[inbucket]
+port = 54324
+email = "admin@email.com"
+smtp_port = 54325
+
+[storage]
+file_size_limit = "50MiB"
+
+[auth]
+enabled = true
