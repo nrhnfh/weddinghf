@@ -77,11 +77,15 @@
       cursor: pointer;
       letter-spacing: 3px;
       font-family: 'Amiri', 'Lateef', serif;
+      -webkit-tap-highlight-color: transparent;
     }
     .btn-open:hover {
       background: var(--gold);
       color: var(--navy);
       transform: scale(1.03);
+    }
+    .btn-open:active {
+      transform: scale(0.97);
     }
 
     .btn-outline {
@@ -101,7 +105,6 @@
       color: var(--navy);
     }
 
-    /* ===== ORNAMENTS ===== */
     .floral-ornament {
       font-family: 'Amiri', serif;
       font-size: 2.2rem;
@@ -266,7 +269,6 @@
       background: rgba(201, 168, 108, 0.15);
     }
 
-    /* ===== HERO ===== */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -337,7 +339,6 @@
       50% { transform: translateY(-8px) rotate(5deg); }
     }
 
-    /* ===== SECTION ===== */
     .section-title {
       margin-bottom: 40px;
     }
@@ -356,7 +357,6 @@
       font-size: 1.1rem;
     }
 
-    /* ===== COUPLE ===== */
     .couple-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -400,7 +400,6 @@
       font-family: 'Lateef', 'Amiri', serif;
     }
 
-    /* ===== EVENTS ===== */
     .event-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -432,7 +431,6 @@
       font-family: 'Cinzel', 'Marcellus', serif;
     }
 
-    /* ===== COUNTDOWN ===== */
     .countdown {
       display: flex;
       justify-content: center;
@@ -464,7 +462,6 @@
       font-family: 'Cinzel', 'Marcellus', serif;
     }
 
-    /* ===== GALLERY ===== */
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -487,7 +484,6 @@
       border-color: var(--gold);
     }
 
-    /* ===== RSVP ===== */
     .rsvp-form {
       max-width: 500px;
       margin: 0 auto;
@@ -523,7 +519,6 @@
       background: white;
     }
 
-    /* ===== COMMENTS ===== */
     .comments-list {
       max-width: 650px;
       margin: 20px auto 0;
@@ -600,7 +595,6 @@
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* ===== GIFT ===== */
     .gift-card {
       background: white;
       border-radius: 16px;
@@ -644,7 +638,6 @@
     }
     .gift-card .btn-copy:hover { background: #b8963a; }
 
-    /* ===== FOOTER ===== */
     .footer {
       background: var(--navy);
       color: rgba(255, 255, 255, 0.6);
@@ -661,7 +654,6 @@
       letter-spacing: 1px;
     }
 
-    /* ===== MUSIC BUTTON ===== */
     .music-btn {
       position: fixed;
       bottom: 90px;
@@ -683,7 +675,6 @@
     }
     .music-btn:hover { transform: scale(1.05); border-color: var(--gold-light); }
 
-    /* ===== BOTTOM NAV ===== */
     .bottom-nav {
       display: none;
       position: fixed;
@@ -724,7 +715,6 @@
       transform: translateY(0);
     }
 
-    /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .bottom-nav { display: flex; }
@@ -1001,13 +991,17 @@
 
   <script>
     // ============================================================
-    //  🔑 KONFIGURASI SUPABASE - GANTI DENGAN CREDENTIALS ANDA!
+    //  🔑 KONFIGURASI SUPABASE - GANTI DENGAN KEY DARI DASHBOARD!
+    //  ============================================================
+    //  AMBIL DARI: Settings → API → Publishable Key
     //  ============================================================
     const SUPABASE_URL = 'https://dsingkecblyqxcgxjwgp.supabase.co';
+    // ⚠️⚠️⚠️ GANTI INI DENGAN KEY DARI DASHBOARD ⚠️⚠️⚠️
     const SUPABASE_ANON_KEY = 'sb_publishable_z6zLAxCMOSPRKmD30Rdrgg_p8DJXVI3';
 
-    console.log('🚀 Memulai koneksi ke Supabase...');
+    console.log('🚀 Memulai...');
     console.log('📡 URL:', SUPABASE_URL);
+    console.log('🔑 Key:', SUPABASE_ANON_KEY ? SUPABASE_ANON_KEY.substring(0, 20) + '...' : 'KOSONG!');
 
     // ============================================================
     //  📦 INISIALISASI SUPABASE
@@ -1016,6 +1010,9 @@
     let isSupabaseConnected = false;
 
     try {
+      if (!SUPABASE_ANON_KEY || SUPABASE_ANON_KEY === '') {
+        throw new Error('API Key kosong! Silakan isi SUPABASE_ANON_KEY');
+      }
       supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
       isSupabaseConnected = true;
       console.log('✅ Supabase client berhasil dibuat!');
@@ -1025,7 +1022,7 @@
     }
 
     // ============================================================
-    //  📊 DATA PERNIKAHAN - HANIFAH & FARID
+    //  📊 DATA PERNIKAHAN
     //  ============================================================
     const weddingData = {
       groomName: "Farid Ramadhona",
@@ -1061,7 +1058,6 @@
 
     const guestName = getGuestName();
 
-    // Render nama ke semua tempat
     document.getElementById('guestNameCover').innerHTML = guestName;
     document.getElementById('guestNameWelcome').innerHTML = guestName;
     document.getElementById('coverNames').innerHTML = weddingData.brideName + ' &amp; ' + weddingData.groomName;
@@ -1115,15 +1111,12 @@
       commentsList.innerHTML = html;
     }
 
-    // ============================================================
-    //  🔄 LOAD KOMENTAR DARI SUPABASE
-    //  ============================================================
     async function loadComments() {
       if (!isSupabaseConnected || !supabaseClient) {
-        console.warn('⚠️ Supabase tidak terhubung, menggunakan data lokal');
         loadingState.innerHTML = `
           <div style="text-align:center; color:#b91c1c; padding:20px;">
-            ⚠️ Tidak terhubung ke database. Komentar hanya tersimpan lokal.
+            ⚠️ Tidak terhubung ke database. Periksa API Key.
+            <br><small style="color:#8a9aaa;">Pastikan SUPABASE_ANON_KEY benar</small>
           </div>
         `;
         return;
@@ -1153,15 +1146,12 @@
         loadingState.innerHTML = `
           <div style="text-align:center; color:#b91c1c; padding:20px;">
             ⚠️ Gagal memuat komentar: ${error.message}
-            <br><small style="color:#8a9aaa;">Silakan refresh halaman</small>
+            <br><small style="color:#8a9aaa;">Periksa API Key di dashboard Supabase</small>
           </div>
         `;
       }
     }
 
-    // ============================================================
-    //  📝 KIRIM KOMENTAR KE SUPABASE
-    //  ============================================================
     async function addComment(name, status, text, isRsvp = false) {
       if (!name || !text) {
         commentFeedback.innerHTML = '<span style="color:#b91c1c;">⚠️ Nama dan ucapan harus diisi</span>';
@@ -1169,7 +1159,7 @@
       }
 
       if (!isSupabaseConnected || !supabaseClient) {
-        commentFeedback.innerHTML = '<span style="color:#b91c1c;">⚠️ Database tidak terhubung. Coba lagi nanti.</span>';
+        commentFeedback.innerHTML = '<span style="color:#b91c1c;">⚠️ Database tidak terhubung.</span>';
         return false;
       }
 
@@ -1193,7 +1183,7 @@
 
       } catch (error) {
         console.error('❌ Error adding comment:', error);
-        commentFeedback.innerHTML = `<span style="color:#b91c1c;">⚠️ Gagal mengirim: ${error.message || 'Coba lagi'}</span>`;
+        commentFeedback.innerHTML = `<span style="color:#b91c1c;">⚠️ Gagal mengirim: ${error.message}</span>`;
         return false;
       }
     }
@@ -1222,7 +1212,7 @@
           .subscribe((status) => {
             console.log('📡 Supabase subscription status:', status);
             if (status === 'SUBSCRIBED') {
-              console.log('✅ Real-time aktif! Komentar akan muncul otomatis.');
+              console.log('✅ Real-time aktif!');
             }
           });
       } catch (error) {
@@ -1279,7 +1269,7 @@
     });
 
     // ============================================================
-    //  🚀 LOAD KOMENTAR SAAT HALAMAN DIBUKA
+    //  🚀 LOAD KOMENTAR
     //  ============================================================
     loadComments();
 
@@ -1299,25 +1289,30 @@
       document.querySelectorAll('.fade-up').forEach(el => el.classList.add('visible'));
 
       const music = document.getElementById('bgMusic');
-      music.play().catch(() => {
-        console.log('Autoplay blocked, user must interact first');
-      });
+      music.play().catch(() => {});
       document.getElementById('musicBtn').textContent = '⏸️';
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
+    // Click (Desktop)
     btnOpen.addEventListener('click', function(e) {
       e.preventDefault();
-      console.log('🔘 Tombol diklik!');
+      e.stopPropagation();
+      console.log('🔘 Click event terdeteksi!');
       openInvitation();
     });
 
+    // Touch (Mobile)
     btnOpen.addEventListener('touchstart', function(e) {
       e.preventDefault();
-      console.log('📱 Tombol disentuh!');
+      e.stopPropagation();
+      console.log('📱 Touch event terdeteksi!');
       openInvitation();
     }, { passive: false });
+
+    // Fallback
+    btnOpen.setAttribute('onclick', 'openInvitation()');
 
     console.log('✅ Tombol "Buka Undangan" siap!');
 
@@ -1368,7 +1363,7 @@
     });
 
     // ============================================================
-    //  🎁 GIFT - SALIN REKENING
+    //  🎁 GIFT
     //  ============================================================
     document.getElementById('copyBtn').addEventListener('click', () => {
       const account = weddingData.accountNumber;
