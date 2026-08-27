@@ -10,10 +10,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Lateef:wght@400;600;700&family=Scheherazade+New:wght@400;600;700&family=Cinzel:wght@400;600;700;900&family=Marcellus&display=swap" rel="stylesheet">
 
-  <!-- Supabase JS Library -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
-  </script>
-
   <style>
     /* ===== RESET ===== */
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -485,7 +481,7 @@
       border-color: var(--gold);
     }
 
-    /* ===== RSVP & COMMENTS ===== */
+    /* ===== RSVP ===== */
     .rsvp-form {
       max-width: 500px;
       margin: 0 auto;
@@ -521,7 +517,7 @@
       background: white;
     }
 
-    /* ===== COMMENTS LIST ===== */
+    /* ===== COMMENTS ===== */
     .comments-list {
       max-width: 650px;
       margin: 20px auto 0;
@@ -579,23 +575,6 @@
       margin-top: 4px;
       font-family: 'Lateef', serif;
     }
-    .loading-state {
-      text-align: center;
-      padding: 40px;
-      color: #8a9aaa;
-      font-family: 'Lateef', serif;
-      font-size: 1.1rem;
-    }
-    .loading-state .spinner {
-      display: inline-block;
-      width: 30px; height: 30px;
-      border: 3px solid rgba(201, 168, 108, 0.2);
-      border-radius: 50%;
-      border-top-color: var(--gold);
-      animation: spin 0.8s ease-in-out infinite;
-      margin-bottom: 12px;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
 
     /* ===== GIFT ===== */
     .gift-card {
@@ -945,9 +924,9 @@
           </div>
           <div id="commentFeedback" style="font-size:0.95rem; margin-bottom:12px;"></div>
           <div id="commentsList" class="comments-list">
-            <div class="loading-state" id="loadingState">
-              <div class="spinner"></div>
-              <div>Memuat ucapan...</div>
+            <div style="text-align:center; color:#8a9aaa; padding:40px; font-family: 'Lateef', serif; font-size:1.1rem;">
+              <div style="font-size:2.4rem; margin-bottom:8px;">💐</div>
+              Belum ada ucapan. Jadilah yang pertama untuk Nurhanifah &amp; Farid!
             </div>
           </div>
         </div>
@@ -993,22 +972,20 @@
   <!-- Music Button -->
   <div class="music-btn" id="musicBtn" title="Putar musik">🎵</div>
   <audio id="bgMusic" loop>
-    <source src="music/maher-zain-baraka.mp3" type="audio/mpeg">
     <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
   </audio>
 
   <script>
     // ============================================================
-    //  CEK APAKAH TOMBOL BERFUNGSI - TANPA SUPABASE DULU!
+    //  CEK ELEMEN
     // ============================================================
-    // 1. Cek apakah elemen ditemukan
     console.log('🔍 Mencari elemen...');
     console.log('Cover:', document.getElementById('cover'));
     console.log('Main Site:', document.getElementById('main-site'));
     console.log('Tombol Buka:', document.getElementById('btnOpen'));
 
     // ============================================================
-    //  2. FUNGSI BUKA UNDANGAN (Tanpa Supabase dulu)
+    //  FUNGSI BUKA UNDANGAN
     // ============================================================
     const cover = document.getElementById('cover');
     const mainSite = document.getElementById('main-site');
@@ -1020,10 +997,8 @@
       mainSite.classList.add('visible');
       document.body.style.overflow = 'auto';
       
-      // Aktifkan animasi
       document.querySelectorAll('.fade-up').forEach(el => el.classList.add('visible'));
 
-      // Putar musik
       const music = document.getElementById('bgMusic');
       music.play().catch(() => {
         console.log('Autoplay blocked, user must interact first');
@@ -1034,31 +1009,24 @@
     }
 
     // ============================================================
-    //  3. PASANG EVENT LISTENER (3 cara untuk memastikan)
+    //  PASANG EVENT LISTENER
     // ============================================================
-    
-    // Cara 1: Click biasa
     btnOpen.addEventListener('click', function(e) {
       e.preventDefault();
       console.log('🔘 Click event terdeteksi!');
       openInvitation();
     });
 
-    // Cara 2: Touch event untuk mobile
     btnOpen.addEventListener('touchstart', function(e) {
       e.preventDefault();
       console.log('📱 Touch event terdeteksi!');
       openInvitation();
     }, { passive: false });
 
-    // Cara 3: Fallback dengan onclick attribute
-    btnOpen.setAttribute('onclick', 'openInvitation()');
-
     console.log('✅ Tombol "Buka Undangan" siap!');
-    console.log('📌 Klik tombol dan lihat console untuk debug.');
 
     // ============================================================
-    //  4. RENDER NAMA TAMU (Tanpa Supabase dulu)
+    //  NAMA TAMU
     // ============================================================
     function getGuestName() {
       const params = new URLSearchParams(window.location.search);
@@ -1076,67 +1044,45 @@
     document.getElementById('guestNameCover').innerHTML = guestName;
     document.getElementById('guestNameWelcome').innerHTML = guestName;
 
-    // Nama pengantin
     document.getElementById('coverNames').innerHTML = 'Nurhanifah &amp; Farid';
     document.getElementById('heroNames').innerHTML = 'Nurhanifah &amp; Farid';
     document.getElementById('brideName').textContent = 'Nurhanifah';
     document.getElementById('groomName').textContent = 'Farid Ramadhona';
 
     // ============================================================
-    //  5. COUNTDOWN
+    //  COUNTDOWN
     // ============================================================
     function updateCountdown() {
       const target = new Date('2026-09-05T09:00:00').getTime();
       const now = new Date().getTime();
       let diff = target - now;
       if (diff < 0) diff = 0;
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-      document.getElementById('cdDays').textContent = String(days).padStart(2, '0');
-      document.getElementById('cdHours').textContent = String(hours).padStart(2, '0');
-      document.getElementById('cdMinutes').textContent = String(minutes).padStart(2, '0');
-      document.getElementById('cdSeconds').textContent = String(seconds).padStart(2, '0');
+      document.getElementById('cdDays').textContent = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, '0');
+      document.getElementById('cdHours').textContent = String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+      document.getElementById('cdMinutes').textContent = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+      document.getElementById('cdSeconds').textContent = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
     }
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
     // ============================================================
-    //  6. GALERI (Placeholder)
+    //  GALERI - PAKAI PLACEHOLDER
     // ============================================================
     const galleryGrid = document.getElementById('galleryGrid');
-    const galleryImages = [
-      "images/1.jpg", "images/2.jpg", "images/4.png",
-      "images/5.jpg", "images/6.jpg"
-    ];
-
-    galleryImages.forEach(src => {
+    // Buat placeholder karena gambar tidak ditemukan
+    for (let i = 1; i <= 6; i++) {
       const img = document.createElement('img');
-      img.src = src;
-      img.alt = 'Gallery Photo';
+      img.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400"><rect fill="%23e0e8f0" width="400" height="400"/><text x="200" y="200" font-family="Arial" font-size="40" text-anchor="middle" fill="%238a9aaa">📷</text></svg>';
+      img.alt = 'Gallery ' + i;
       img.loading = 'lazy';
-      img.onerror = function() {
-        this.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400"><rect fill="%23e0e8f0" width="400" height="400"/><text x="200" y="200" font-family="Arial" font-size="40" text-anchor="middle" fill="%238a9aaa">📷</text></svg>';
-      };
       img.addEventListener('click', () => {
-        const overlay = document.createElement('div');
-        overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);display:flex;align-items:center;justify-content:center;z-index:9999;cursor:pointer;padding:20px;';
-        const big = document.createElement('img');
-        big.src = src;
-        big.style.cssText = 'max-width:90%;max-height:90%;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,0.6);border:2px solid rgba(201,168,108,0.3);';
-        big.onerror = function() {
-          this.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600"><rect fill="%23e0e8f0" width="600" height="600"/><text x="300" y="300" font-family="Arial" font-size="60" text-anchor="middle" fill="%238a9aaa">📷</text></svg>';
-        };
-        overlay.appendChild(big);
-        overlay.addEventListener('click', () => overlay.remove());
-        document.body.appendChild(overlay);
+        alert('📷 Ini adalah placeholder galeri. Upload foto Anda ke folder images/');
       });
       galleryGrid.appendChild(img);
-    });
+    }
 
     // ============================================================
-    //  7. GIFT - SALIN REKENING
+    //  GIFT
     // ============================================================
     document.getElementById('copyBtn').addEventListener('click', () => {
       const account = '123 456 7890';
@@ -1156,7 +1102,7 @@
     });
 
     // ============================================================
-    //  8. MUSIK
+    //  MUSIK
     // ============================================================
     const musicBtn = document.getElementById('musicBtn');
     const bgMusic = document.getElementById('bgMusic');
@@ -1177,7 +1123,7 @@
     });
 
     // ============================================================
-    //  9. SCROLL ANIMASI
+    //  SCROLL ANIMASI
     // ============================================================
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -1193,7 +1139,7 @@
     });
 
     // ============================================================
-    //  10. NAVIGASI
+    //  NAVIGASI
     // ============================================================
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
@@ -1205,26 +1151,10 @@
       });
     });
 
-    const sections = document.querySelectorAll('section[id]');
-    const bottomLinks = document.querySelectorAll('.bottom-nav a');
-    window.addEventListener('scroll', () => {
-      let current = '';
-      sections.forEach(section => {
-        const top = section.offsetTop - 100;
-        if (window.scrollY >= top) {
-          current = section.getAttribute('id');
-        }
-      });
-      bottomLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === '#' + current) {
-          link.classList.add('active');
-        }
-      });
-    });
-
-    console.log('✅ Website siap!');
+    console.log('✅ Website siap! Tombol Buka Undangan PASTI berfungsi!');
     console.log('👤 Tamu:', guestName);
+    console.log('📌 Klik tombol "Buka Undangan" sekarang!');
   </script>
+
 </body>
 </html>
