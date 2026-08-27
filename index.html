@@ -3,15 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-  <title>Undangan Pernikahan Nurhanifah & Farid</title>
+  <title>Undangan Pernikahan Hanifah & Farid</title>
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Lateef:wght@400;600;700&family=Scheherazade+New:wght@400;600;700&family=Cinzel:wght@400;600;700;900&family=Marcellus&display=swap" rel="stylesheet">
 
+  <!-- Supabase JS Library -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+  </script>
+
   <style>
-    /* ===== RESET ===== */
+    /* ===== RESET & BASE ===== */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Lateef', 'Amiri', 'Scheherazade New', serif;
@@ -37,6 +41,7 @@
     .text-center { text-align: center; }
     .bg-ivory { background: var(--ivory); }
 
+    /* ===== BUTTONS ===== */
     .btn-primary {
       display: inline-block;
       background: var(--gold);
@@ -96,6 +101,7 @@
       color: var(--navy);
     }
 
+    /* ===== ORNAMENTS ===== */
     .floral-ornament {
       font-family: 'Amiri', serif;
       font-size: 2.2rem;
@@ -576,6 +582,24 @@
       font-family: 'Lateef', serif;
     }
 
+    .loading-state {
+      text-align: center;
+      padding: 40px;
+      color: #8a9aaa;
+      font-family: 'Lateef', serif;
+      font-size: 1.1rem;
+    }
+    .loading-state .spinner {
+      display: inline-block;
+      width: 30px; height: 30px;
+      border: 3px solid rgba(201, 168, 108, 0.2);
+      border-radius: 50%;
+      border-top-color: var(--gold);
+      animation: spin 0.8s ease-in-out infinite;
+      margin-bottom: 12px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
     /* ===== GIFT ===== */
     .gift-card {
       background: white;
@@ -728,7 +752,7 @@
     <div class="cover-floral"></div>
     <div class="cover-content">
       <div class="the-wedding-of">♥ THE WEDDING OF ♥</div>
-      <h1 id="coverNames">Nurhanifah &amp; Farid</h1>
+      <h1 id="coverNames">Hanifah &amp; Farid</h1>
       <div class="date">⚘ Sabtu, 05 September 2026 ⚘</div>
       <div class="love-divider" style="margin:10px 0;"><span style="color:var(--rose);font-size:1.2rem;">♥ ♥ ♥</span></div>
       <div class="cover-guest">
@@ -744,7 +768,7 @@
 
     <!-- Navbar -->
     <nav class="navbar" id="navbar">
-      <div class="logo">♥ Nurhanifah &amp; Farid ♥</div>
+      <div class="logo">♥ Hanifah &amp; Farid ♥</div>
       <div class="nav-links">
         <a href="#hero">Home</a>
         <a href="#couple">Mempelai</a>
@@ -760,7 +784,7 @@
       <div class="hero-floral"></div>
       <div class="hero-content">
         <div class="the-wedding-of">♥ THE WEDDING OF ♥</div>
-        <h1 id="heroNames">Nurhanifah &amp; Farid</h1>
+        <h1 id="heroNames">Hanifah &amp; Farid</h1>
         <div class="date">⚘ Sabtu, 05 September 2026 ⚘</div>
         <div class="hero-ornament">
           <span class="floating-flower">⚘</span>
@@ -796,7 +820,7 @@
         <div class="couple-grid">
           <div class="couple-card">
             <div class="avatar">👰</div>
-            <h3 id="brideName">Nurhanifah</h3>
+            <h3 id="brideName">Hanifah</h3>
             <div class="parent">Putri dari Bapak Muhamad &amp; Ibu Surati</div>
           </div>
           <div class="couple-card">
@@ -824,7 +848,7 @@
             <div class="label">⚘ Waktu ⚘</div>
             <p>09:00 - 10:00 WIB</p>
             <div class="label">♥ Lokasi ♥</div>
-            <p>Masjid Al-Furqan, Jakarta</p>
+            <p>Gedung Sanggita, Jakarta Timur</p>
             <a href="https://maps.google.com" target="_blank" class="btn-outline" style="margin-top:12px; display:inline-block; font-size:0.85rem; padding:8px 24px;">⚘ Buka Google Maps ⚘</a>
           </div>
           <div class="event-card text-center">
@@ -834,7 +858,7 @@
             <div class="label">⚘ Waktu ⚘</div>
             <p>11:00 - 15:00 WIB</p>
             <div class="label">♥ Lokasi ♥</div>
-            <p>Gedung Sanggita Polri, Jakarta</p>
+            <p>Gedung Sanggita, Jakarta Timur</p>
             <a href="https://maps.google.com" target="_blank" class="btn-outline" style="margin-top:12px; display:inline-block; font-size:0.85rem; padding:8px 24px;">⚘ Buka Google Maps ⚘</a>
           </div>
         </div>
@@ -924,9 +948,9 @@
           </div>
           <div id="commentFeedback" style="font-size:0.95rem; margin-bottom:12px;"></div>
           <div id="commentsList" class="comments-list">
-            <div style="text-align:center; color:#8a9aaa; padding:40px; font-family: 'Lateef', serif; font-size:1.1rem;">
-              <div style="font-size:2.4rem; margin-bottom:8px;">💐</div>
-              Belum ada ucapan. Jadilah yang pertama untuk Nurhanifah &amp; Farid!
+            <div class="loading-state" id="loadingState">
+              <div class="spinner"></div>
+              <div>Memuat ucapan...</div>
             </div>
           </div>
         </div>
@@ -945,7 +969,7 @@
           <p style="color:#5a6a7a; font-family: 'Lateef', serif; font-size:1.05rem;">Kirim hadiah melalui rekening berikut:</p>
           <div class="bank">♥ Bank BCA ♥</div>
           <div class="account" id="accountNumber">123 456 7890</div>
-          <p style="font-size:0.95rem; color:#5a6a7a; font-family: 'Lateef', serif;">a.n. Nurhanifah &amp; Farid</p>
+          <p style="font-size:0.95rem; color:#5a6a7a; font-family: 'Lateef', serif;">a.n. Hanifah &amp; Farid</p>
           <button class="btn-copy" id="copyBtn">⚘ Salin Nomor Rekening ⚘</button>
           <div style="margin-top:12px; font-size:0.95rem; color: var(--gold);" id="copyFeedback"></div>
         </div>
@@ -954,7 +978,7 @@
 
     <!-- Footer -->
     <footer class="footer">
-      <p>♥ Undangan Pernikahan <strong>Nurhanifah &amp; Farid</strong> • 05 September 2026 ♥</p>
+      <p>♥ Undangan Pernikahan <strong>Hanifah &amp; Farid</strong> • 05 September 2026 ♥</p>
       <p style="font-size:0.75rem; margin-top:4px; opacity:0.7;">⚘ Dibuat dengan cinta • Arabic Classic Elegance ⚘</p>
     </footer>
   </div>
@@ -977,57 +1001,52 @@
 
   <script>
     // ============================================================
-    //  CEK ELEMEN
-    // ============================================================
-    console.log('🔍 Mencari elemen...');
-    console.log('Cover:', document.getElementById('cover'));
-    console.log('Main Site:', document.getElementById('main-site'));
-    console.log('Tombol Buka:', document.getElementById('btnOpen'));
+    //  🔑 KONFIGURASI SUPABASE - GANTI DENGAN CREDENTIALS ANDA!
+    //  ============================================================
+    const SUPABASE_URL = 'https://dsingkecblyqxcgxjwgp.supabase.co';
+    const SUPABASE_ANON_KEY = 'sb_publishable_z6zLAxCMOSPRKmD30Rdrgg_p8DJXVI3';
+
+    console.log('🚀 Memulai koneksi ke Supabase...');
+    console.log('📡 URL:', SUPABASE_URL);
 
     // ============================================================
-    //  FUNGSI BUKA UNDANGAN
-    // ============================================================
-    const cover = document.getElementById('cover');
-    const mainSite = document.getElementById('main-site');
-    const btnOpen = document.getElementById('btnOpen');
+    //  📦 INISIALISASI SUPABASE
+    //  ============================================================
+    let supabaseClient = null;
+    let isSupabaseConnected = false;
 
-    function openInvitation() {
-      console.log('🎉 Membuka undangan...');
-      cover.classList.add('hidden');
-      mainSite.classList.add('visible');
-      document.body.style.overflow = 'auto';
-      
-      document.querySelectorAll('.fade-up').forEach(el => el.classList.add('visible'));
-
-      const music = document.getElementById('bgMusic');
-      music.play().catch(() => {
-        console.log('Autoplay blocked, user must interact first');
-      });
-      document.getElementById('musicBtn').textContent = '⏸️';
-      
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    try {
+      supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+      isSupabaseConnected = true;
+      console.log('✅ Supabase client berhasil dibuat!');
+    } catch (error) {
+      console.error('❌ Gagal membuat Supabase client:', error.message);
+      isSupabaseConnected = false;
     }
 
     // ============================================================
-    //  PASANG EVENT LISTENER
-    // ============================================================
-    btnOpen.addEventListener('click', function(e) {
-      e.preventDefault();
-      console.log('🔘 Click event terdeteksi!');
-      openInvitation();
-    });
+    //  📊 DATA PERNIKAHAN - HANIFAH & FARID
+    //  ============================================================
+    const weddingData = {
+      groomName: "Farid Ramadhona",
+      brideName: "Hanifah",
+      groomParent: "Bapak Rahmat M Kapi & Ibu Aenok Pauziyah",
+      brideParent: "Bapak Muhamad & Ibu Surati",
+      weddingDate: "2026-09-05T09:00:00",
+      venue: "Gedung Sanggita, Jakarta Timur",
+      mapsUrl: "https://maps.google.com",
+      bankName: "Bank BCA",
+      accountNumber: "123 456 7890",
+      accountHolder: "Hanifah & Farid",
+      galleryImages: [
+        "images/1.jpg", "images/2.jpg", "images/4.png",
+        "images/5.jpg", "images/6.jpg"
+      ]
+    };
 
-    btnOpen.addEventListener('touchstart', function(e) {
-      e.preventDefault();
-      console.log('📱 Touch event terdeteksi!');
-      openInvitation();
-    }, { passive: false });
-
-    console.log('✅ Tombol "Buka Undangan" siap!');
-
     // ============================================================
-    //  NAMA TAMU
-    // ============================================================
+    //  👤 SISTEM NAMA TAMU
+    //  ============================================================
     function getGuestName() {
       const params = new URLSearchParams(window.location.search);
       let name = params.get('to');
@@ -1041,19 +1060,272 @@
     }
 
     const guestName = getGuestName();
+
+    // Render nama ke semua tempat
     document.getElementById('guestNameCover').innerHTML = guestName;
     document.getElementById('guestNameWelcome').innerHTML = guestName;
-
-    document.getElementById('coverNames').innerHTML = 'Nurhanifah &amp; Farid';
-    document.getElementById('heroNames').innerHTML = 'Nurhanifah &amp; Farid';
-    document.getElementById('brideName').textContent = 'Nurhanifah';
-    document.getElementById('groomName').textContent = 'Farid Ramadhona';
+    document.getElementById('coverNames').innerHTML = weddingData.brideName + ' &amp; ' + weddingData.groomName;
+    document.getElementById('heroNames').innerHTML = weddingData.brideName + ' &amp; ' + weddingData.groomName;
+    document.getElementById('brideName').textContent = weddingData.brideName;
+    document.getElementById('groomName').textContent = weddingData.groomName;
 
     // ============================================================
-    //  COUNTDOWN
+    //  💬 FUNGSI KOMENTAR
+    //  ============================================================
+    let comments = [];
+    const commentsList = document.getElementById('commentsList');
+    const commentFeedback = document.getElementById('commentFeedback');
+    const loadingState = document.getElementById('loadingState');
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    function renderComments() {
+      if (comments.length === 0) {
+        commentsList.innerHTML = `
+          <div style="text-align:center; color:#8a9aaa; padding:40px; font-family: 'Lateef', serif; font-size:1.1rem;">
+            <div style="font-size:2.4rem; margin-bottom:8px;">💐</div>
+            Belum ada ucapan. Jadilah yang pertama untuk Hanifah &amp; Farid!
+          </div>
+        `;
+        return;
+      }
+
+      let html = '';
+      comments.forEach(c => {
+        const initial = c.name ? c.name.charAt(0).toUpperCase() : '?';
+        const statusLabel = c.is_rsvp ? '♥ RSVP' : (c.status === 'Hadir' ? '✅ Hadir' : '❌ Tidak hadir');
+        const time = c.created_at ? new Date(c.created_at).toLocaleString('id-ID') :
+          c.time ? new Date(c.time).toLocaleString('id-ID') : 'Baru saja';
+
+        html += `
+          <div class="comment-item">
+            <div class="avatar">${escapeHtml(initial)}</div>
+            <div class="body">
+              <div class="name">${escapeHtml(c.name || 'Anonim')} <span class="status">${statusLabel}</span></div>
+              <div class="text">${escapeHtml(c.text || '')}</div>
+              <div class="time">${escapeHtml(time)}</div>
+            </div>
+          </div>
+        `;
+      });
+      commentsList.innerHTML = html;
+    }
+
     // ============================================================
+    //  🔄 LOAD KOMENTAR DARI SUPABASE
+    //  ============================================================
+    async function loadComments() {
+      if (!isSupabaseConnected || !supabaseClient) {
+        console.warn('⚠️ Supabase tidak terhubung, menggunakan data lokal');
+        loadingState.innerHTML = `
+          <div style="text-align:center; color:#b91c1c; padding:20px;">
+            ⚠️ Tidak terhubung ke database. Komentar hanya tersimpan lokal.
+          </div>
+        `;
+        return;
+      }
+
+      try {
+        loadingState.style.display = 'block';
+        loadingState.innerHTML = `
+          <div class="spinner"></div>
+          <div>Memuat ucapan...</div>
+        `;
+
+        const { data, error } = await supabaseClient
+          .from('comments')
+          .select('*')
+          .order('created_at', { ascending: false });
+
+        if (error) throw error;
+
+        comments = data || [];
+        renderComments();
+        loadingState.style.display = 'none';
+        console.log('✅ Komentar berhasil dimuat:', comments.length, 'data');
+
+      } catch (error) {
+        console.error('❌ Error loading comments:', error);
+        loadingState.innerHTML = `
+          <div style="text-align:center; color:#b91c1c; padding:20px;">
+            ⚠️ Gagal memuat komentar: ${error.message}
+            <br><small style="color:#8a9aaa;">Silakan refresh halaman</small>
+          </div>
+        `;
+      }
+    }
+
+    // ============================================================
+    //  📝 KIRIM KOMENTAR KE SUPABASE
+    //  ============================================================
+    async function addComment(name, status, text, isRsvp = false) {
+      if (!name || !text) {
+        commentFeedback.innerHTML = '<span style="color:#b91c1c;">⚠️ Nama dan ucapan harus diisi</span>';
+        return false;
+      }
+
+      if (!isSupabaseConnected || !supabaseClient) {
+        commentFeedback.innerHTML = '<span style="color:#b91c1c;">⚠️ Database tidak terhubung. Coba lagi nanti.</span>';
+        return false;
+      }
+
+      try {
+        const { data, error } = await supabaseClient
+          .from('comments')
+          .insert([{
+            name: name.trim(),
+            status: status || 'Hadir',
+            text: text.trim(),
+            is_rsvp: isRsvp,
+            created_at: new Date().toISOString()
+          }])
+          .select();
+
+        if (error) throw error;
+
+        commentFeedback.innerHTML = '<span style="color:var(--gold);">✅ Ucapan terkirim!</span>';
+        setTimeout(() => { commentFeedback.innerHTML = ''; }, 3000);
+        return true;
+
+      } catch (error) {
+        console.error('❌ Error adding comment:', error);
+        commentFeedback.innerHTML = `<span style="color:#b91c1c;">⚠️ Gagal mengirim: ${error.message || 'Coba lagi'}</span>`;
+        return false;
+      }
+    }
+
+    // ============================================================
+    //  🔴 REALTIME SUBSCRIPTION
+    //  ============================================================
+    if (isSupabaseConnected && supabaseClient) {
+      try {
+        const channel = supabaseClient
+          .channel('comments-channel')
+          .on('postgres_changes', {
+            event: 'INSERT',
+            schema: 'public',
+            table: 'comments'
+          }, (payload) => {
+            if (payload.new) {
+              const exists = comments.some(c => c.id === payload.new.id);
+              if (!exists) {
+                comments.unshift(payload.new);
+                renderComments();
+                console.log('🔄 Komentar baru masuk real-time!');
+              }
+            }
+          })
+          .subscribe((status) => {
+            console.log('📡 Supabase subscription status:', status);
+            if (status === 'SUBSCRIBED') {
+              console.log('✅ Real-time aktif! Komentar akan muncul otomatis.');
+            }
+          });
+      } catch (error) {
+        console.warn('⚠️ Gagal subscribe real-time:', error.message);
+      }
+    }
+
+    // ============================================================
+    //  🎯 RSVP
+    //  ============================================================
+    const rsvpSubmit = document.getElementById('rsvpSubmit');
+    const rsvpFeedback = document.getElementById('rsvpFeedback');
+
+    rsvpSubmit.addEventListener('click', async () => {
+      const name = document.getElementById('rsvpName').value.trim();
+      const attend = document.getElementById('rsvpAttend').value;
+      const guests = document.getElementById('rsvpGuests').value;
+      const message = document.getElementById('rsvpMessage').value.trim();
+
+      if (!name) {
+        rsvpFeedback.innerHTML = '<span style="color:#b91c1c;">⚠️ Nama harus diisi</span>';
+        return;
+      }
+
+      const success = await addComment(name, attend, message || 'Hadir dalam acara', true);
+
+      if (success) {
+        rsvpFeedback.innerHTML = '<span style="color:var(--gold);">✅ Konfirmasi berhasil dikirim. Terima kasih!</span>';
+        document.getElementById('rsvpName').value = '';
+        document.getElementById('rsvpGuests').value = '1';
+        document.getElementById('rsvpMessage').value = '';
+        setTimeout(() => { rsvpFeedback.innerHTML = ''; }, 4000);
+      }
+    });
+
+    // ============================================================
+    //  💬 KIRIM UCAPAN
+    //  ============================================================
+    document.getElementById('commentSubmit').addEventListener('click', async () => {
+      const name = document.getElementById('commentName').value.trim();
+      const text = document.getElementById('commentText').value.trim();
+
+      if (!name || !text) {
+        commentFeedback.innerHTML = '<span style="color:#b91c1c;">⚠️ Nama dan ucapan harus diisi</span>';
+        return;
+      }
+
+      const success = await addComment(name, 'Hadir', text);
+
+      if (success) {
+        document.getElementById('commentName').value = '';
+        document.getElementById('commentText').value = '';
+      }
+    });
+
+    // ============================================================
+    //  🚀 LOAD KOMENTAR SAAT HALAMAN DIBUKA
+    //  ============================================================
+    loadComments();
+
+    // ============================================================
+    //  🔓 TOMBOL BUKA UNDANGAN
+    //  ============================================================
+    const cover = document.getElementById('cover');
+    const mainSite = document.getElementById('main-site');
+    const btnOpen = document.getElementById('btnOpen');
+
+    function openInvitation() {
+      console.log('🎉 Membuka undangan...');
+      cover.classList.add('hidden');
+      mainSite.classList.add('visible');
+      document.body.style.overflow = 'auto';
+
+      document.querySelectorAll('.fade-up').forEach(el => el.classList.add('visible'));
+
+      const music = document.getElementById('bgMusic');
+      music.play().catch(() => {
+        console.log('Autoplay blocked, user must interact first');
+      });
+      document.getElementById('musicBtn').textContent = '⏸️';
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    btnOpen.addEventListener('click', function(e) {
+      e.preventDefault();
+      console.log('🔘 Tombol diklik!');
+      openInvitation();
+    });
+
+    btnOpen.addEventListener('touchstart', function(e) {
+      e.preventDefault();
+      console.log('📱 Tombol disentuh!');
+      openInvitation();
+    }, { passive: false });
+
+    console.log('✅ Tombol "Buka Undangan" siap!');
+
+    // ============================================================
+    //  ⏰ COUNTDOWN
+    //  ============================================================
     function updateCountdown() {
-      const target = new Date('2026-09-05T09:00:00').getTime();
+      const target = new Date(weddingData.weddingDate).getTime();
       const now = new Date().getTime();
       let diff = target - now;
       if (diff < 0) diff = 0;
@@ -1066,26 +1338,40 @@
     setInterval(updateCountdown, 1000);
 
     // ============================================================
-    //  GALERI - PAKAI PLACEHOLDER
-    // ============================================================
+    //  🖼️ GALERI
+    //  ============================================================
     const galleryGrid = document.getElementById('galleryGrid');
-    // Buat placeholder karena gambar tidak ditemukan
-    for (let i = 1; i <= 6; i++) {
+    const galleryImages = weddingData.galleryImages;
+
+    galleryImages.forEach(src => {
       const img = document.createElement('img');
-      img.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400"><rect fill="%23e0e8f0" width="400" height="400"/><text x="200" y="200" font-family="Arial" font-size="40" text-anchor="middle" fill="%238a9aaa">📷</text></svg>';
-      img.alt = 'Gallery ' + i;
+      img.src = src;
+      img.alt = 'Gallery Photo';
       img.loading = 'lazy';
+      img.onerror = function() {
+        this.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400"><rect fill="%23e0e8f0" width="400" height="400"/><text x="200" y="200" font-family="Arial" font-size="40" text-anchor="middle" fill="%238a9aaa">📷</text></svg>';
+      };
       img.addEventListener('click', () => {
-        alert('📷 Ini adalah placeholder galeri. Upload foto Anda ke folder images/');
+        const overlay = document.createElement('div');
+        overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);display:flex;align-items:center;justify-content:center;z-index:9999;cursor:pointer;padding:20px;';
+        const big = document.createElement('img');
+        big.src = src;
+        big.style.cssText = 'max-width:90%;max-height:90%;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,0.6);border:2px solid rgba(201,168,108,0.3);';
+        big.onerror = function() {
+          this.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600"><rect fill="%23e0e8f0" width="600" height="600"/><text x="300" y="300" font-family="Arial" font-size="60" text-anchor="middle" fill="%238a9aaa">📷</text></svg>';
+        };
+        overlay.appendChild(big);
+        overlay.addEventListener('click', () => overlay.remove());
+        document.body.appendChild(overlay);
       });
       galleryGrid.appendChild(img);
-    }
+    });
 
     // ============================================================
-    //  GIFT
-    // ============================================================
+    //  🎁 GIFT - SALIN REKENING
+    //  ============================================================
     document.getElementById('copyBtn').addEventListener('click', () => {
-      const account = '123 456 7890';
+      const account = weddingData.accountNumber;
       navigator.clipboard.writeText(account).then(() => {
         document.getElementById('copyFeedback').textContent = '✅ Nomor rekening berhasil disalin!';
         setTimeout(() => { document.getElementById('copyFeedback').textContent = ''; }, 3000);
@@ -1102,8 +1388,8 @@
     });
 
     // ============================================================
-    //  MUSIK
-    // ============================================================
+    //  🎵 MUSIK
+    //  ============================================================
     const musicBtn = document.getElementById('musicBtn');
     const bgMusic = document.getElementById('bgMusic');
     let isMusicPlaying = false;
@@ -1123,8 +1409,8 @@
     });
 
     // ============================================================
-    //  SCROLL ANIMASI
-    // ============================================================
+    //  📜 SCROLL ANIMASI
+    //  ============================================================
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1139,8 +1425,8 @@
     });
 
     // ============================================================
-    //  NAVIGASI
-    // ============================================================
+    //  🧭 NAVIGASI
+    //  ============================================================
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -1151,9 +1437,34 @@
       });
     });
 
-    console.log('✅ Website siap! Tombol Buka Undangan PASTI berfungsi!');
-    console.log('👤 Tamu:', guestName);
-    console.log('📌 Klik tombol "Buka Undangan" sekarang!');
+    const sections = document.querySelectorAll('section[id]');
+    const bottomLinks = document.querySelectorAll('.bottom-nav a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const top = section.offsetTop - 100;
+        if (window.scrollY >= top) {
+          current = section.getAttribute('id');
+        }
+      });
+      bottomLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // ============================================================
+    //  ✅ STATUS AKHIR
+    //  ============================================================
+    console.log('✅ ========================================');
+    console.log('✅ Undangan Pernikahan Hanifah & Farid');
+    console.log('✅ Tanggal: 05 September 2026');
+    console.log('✅ Lokasi: Gedung Sanggita, Jakarta Timur');
+    console.log('✅ Supabase:', isSupabaseConnected ? '🟢 TERHUBUNG' : '🔴 TIDAK TERHUBUNG');
+    console.log('✅ Tamu:', guestName);
+    console.log('✅ ========================================');
   </script>
 
 </body>
