@@ -15,7 +15,7 @@
   </script>
 
   <style>
-    /* ===== CSS LENGKAP ===== */
+    /* ===== RESET & BASE ===== */
     * {
       margin: 0;
       padding: 0;
@@ -40,18 +40,11 @@
 
     :root {
       --navy: #0B1F3A;
-      --light-blue: #AFC9E8;
-      --dusty-blue: #b6cbe0;
-      --ivory: #F8F6F0;
-      --white: #ffffff;
       --gold: #c9a86c;
       --gold-light: #e8d5a8;
+      --ivory: #F8F6F0;
       --shadow: 0 8px 32px rgba(11, 31, 58, 0.12);
-      --glass: rgba(255, 255, 255, 0.3);
-      --border-radius: 24px;
-      --arabic-gold: #b8963a;
       --rose: #e8a0b4;
-      --rose-dark: #c4778f;
     }
 
     .container {
@@ -64,18 +57,6 @@
     }
     .text-center {
       text-align: center;
-    }
-    .text-navy {
-      color: var(--navy);
-    }
-    .text-gold {
-      color: var(--gold);
-    }
-    .text-rose {
-      color: var(--rose-dark);
-    }
-    .bg-navy {
-      background: var(--navy);
     }
     .bg-ivory {
       background: var(--ivory);
@@ -100,8 +81,29 @@
       background: transparent;
       color: var(--gold);
       transform: translateY(-3px);
-      box-shadow: 0 8px 24px rgba(201, 168, 108, 0.4);
     }
+
+    .btn-open {
+      margin-top: 25px;
+      background: rgba(201, 168, 108, 0.2);
+      border: 1.5px solid var(--gold);
+      color: var(--gold-light);
+      padding: 16px 56px;
+      border-radius: 8px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      backdrop-filter: blur(4px);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      letter-spacing: 3px;
+      font-family: 'Amiri', 'Lateef', serif;
+    }
+    .btn-open:hover {
+      background: var(--gold);
+      color: var(--navy);
+      transform: scale(1.03);
+    }
+
     .btn-outline {
       background: transparent;
       color: var(--gold);
@@ -125,10 +127,6 @@
       color: var(--gold);
       opacity: 0.6;
       letter-spacing: 6px;
-    }
-    .floral-ornament-rose {
-      color: var(--rose);
-      opacity: 0.5;
     }
     .floral-divider {
       display: flex;
@@ -169,7 +167,7 @@
       width: 100%;
       height: 100%;
       background: linear-gradient(145deg, #0B1F3A 0%, #1a3350 100%);
-      display: flex;
+      display: flex !important;
       align-items: center;
       justify-content: center;
       z-index: 1000;
@@ -240,32 +238,11 @@
       font-family: 'Amiri', 'Scheherazade New', serif;
       letter-spacing: 1px;
     }
-    .btn-open {
-      margin-top: 25px;
-      background: rgba(201, 168, 108, 0.2);
-      border: 1.5px solid var(--gold);
-      color: var(--gold-light);
-      padding: 16px 56px;
-      border-radius: 8px;
-      font-size: 1.2rem;
-      font-weight: 600;
-      backdrop-filter: blur(4px);
-      transition: all 0.3s ease;
-      cursor: pointer;
-      letter-spacing: 3px;
-      font-family: 'Amiri', 'Lateef', serif;
-    }
-    .btn-open:hover {
-      background: var(--gold);
-      color: var(--navy);
-      transform: scale(1.03);
-      box-shadow: 0 8px 30px rgba(201, 168, 108, 0.3);
-    }
 
     /* MAIN SITE */
     #main-site {
       opacity: 0;
-      transition: opacity 0.8s ease 0.2s;
+      transition: opacity 0.8s ease 0.3s;
       display: none;
     }
     #main-site.visible {
@@ -420,7 +397,12 @@
       margin: 0 auto 16px;
       border: 4px solid var(--gold);
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-      background: #e0e8f0;
+      background: #d4dce8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: var(--navy);
     }
     .couple-card h3 {
       font-family: 'Amiri', 'Scheherazade New', serif;
@@ -560,7 +542,6 @@
       border-color: var(--gold);
       outline: none;
       background: white;
-      box-shadow: 0 0 0 3px rgba(201, 168, 108, 0.1);
     }
 
     .comments-list {
@@ -639,11 +620,6 @@
       border-top-color: var(--gold);
       animation: spin 0.8s ease-in-out infinite;
       margin-bottom: 12px;
-    }
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
     }
 
     .gift-card {
@@ -826,6 +802,7 @@
       opacity: 1;
       transform: translateY(0);
     }
+
     @keyframes floatFlower {
       0%,
       100% {
@@ -844,6 +821,12 @@
     }
     .floating-flower:nth-child(3) {
       animation-delay: 1s;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
     }
   </style>
 </head>
@@ -899,7 +882,7 @@
     <!-- Salam -->
     <section class="section-padding bg-ivory text-center">
       <div class="container">
-        <div class="floral-ornament floral-ornament-rose">♥ ⚘ ♥</div>
+        <div class="floral-ornament" style="color:var(--rose);">♥ ⚘ ♥</div>
         <p style="font-family: 'Amiri', 'Scheherazade New', serif; font-size: 1.8rem; color: var(--navy); letter-spacing: 1px;">Assalamu'alaikum Wr. Wb.</p>
         <div class="floral-divider"><span>⚘ ⚘ ⚘</span></div>
         <p style="max-width: 500px; margin: 16px auto 0; color: #3a4a5a; font-size: 1.1rem; font-family: 'Lateef', 'Amiri', serif;">
@@ -907,7 +890,7 @@
           <strong id="guestNameWelcome" style="font-family: 'Amiri', 'Scheherazade New', serif; font-size: 2rem; color: var(--navy); letter-spacing: 1px;">Tamu Undangan</strong>
           <br>untuk hadir di hari bahagia kami.
         </p>
-        <div class="floral-ornament" style="margin-top:12px; color: var(--rose);">♥ ⚘ ♥</div>
+        <div class="floral-ornament" style="margin-top:12px; color:var(--rose);">♥ ⚘ ♥</div>
       </div>
     </section>
 
@@ -921,18 +904,14 @@
         </div>
         <div class="couple-grid">
           <div class="couple-card">
-            <img src="images/bride.jpg" alt="Nurhanifah" class="avatar"
-            onerror="this.style.display='none'; this.parentElement.innerHTML += '<div class=\'avatar\' style=\'background:#d4dce8;display:flex;align-items:center;justify-content:center;font-size:3rem;color:var(--navy);width:140px;height:140px;border-radius:50%;margin:0 auto 16px;border:4px solid var(--gold);\'>👰</div>'">
+            <div class="avatar">👰</div>
             <h3 id="brideName">Nurhanifah</h3>
             <div class="parent">Putri dari Bapak Muhamad &amp; Ibu Surati</div>
-            <div class="floral-ornament" style="color: var(--rose);">♥</div>
           </div>
           <div class="couple-card">
-            <img src="images/groom.jpg" alt="Farid" class="avatar"
-            onerror="this.style.display='none'; this.parentElement.innerHTML += '<div class=\'avatar\' style=\'background:#d4dce8;display:flex;align-items:center;justify-content:center;font-size:3rem;color:var(--navy);width:140px;height:140px;border-radius:50%;margin:0 auto 16px;border:4px solid var(--gold);\'>🤵</div>'">
+            <div class="avatar">🤵</div>
             <h3 id="groomName">Farid Ramadhona</h3>
             <div class="parent">Putra dari Bapak Rahmat M Kapi &amp; Ibu Aenok Pauziyah</div>
-            <div class="floral-ornament" style="color: var(--gold);">⚘</div>
           </div>
         </div>
       </div>
@@ -942,7 +921,7 @@
     <section id="events" class="section-padding bg-ivory">
       <div class="container">
         <div class="section-title text-center">
-          <div class="floral-ornament floral-ornament-rose">♥ ⚘ ♥</div>
+          <div class="floral-ornament" style="color:var(--rose);">♥ ⚘ ♥</div>
           <h2>Acara</h2>
           <p>Kami tunggu kehadiran Anda</p>
         </div>
@@ -975,7 +954,7 @@
     <section class="section-padding" style="background: linear-gradient(145deg, #0B1F3A, #1a3350); color: white;">
       <div class="container text-center">
         <div class="floral-ornament" style="color: var(--gold-light);">♥ ⚘ ♥</div>
-        <h2 class="font-arabic-heading" style="font-size: clamp(2rem, 4vw, 2.8rem); color: var(--gold-light);">Menuju Hari Bahagia</h2>
+        <h2 style="font-family: 'Amiri','Scheherazade New',serif; font-size: clamp(2rem, 4vw, 2.8rem); color: var(--gold-light);">Menuju Hari Bahagia</h2>
         <div class="countdown" id="countdown">
           <div class="countdown-item"><div class="num" id="cdDays">00</div><div class="label">Hari</div></div>
           <div class="countdown-item"><div class="num" id="cdHours">00</div><div class="label">Jam</div></div>
@@ -990,7 +969,7 @@
     <section id="gallery" class="section-padding">
       <div class="container">
         <div class="section-title text-center">
-          <div class="floral-ornament floral-ornament-rose">♥ ⚘ ♥</div>
+          <div class="floral-ornament" style="color:var(--rose);">♥ ⚘ ♥</div>
           <h2>Galeri</h2>
           <p>Momen indah dalam bingkai</p>
         </div>
@@ -1036,7 +1015,7 @@
     <section id="comments" class="section-padding">
       <div class="container">
         <div class="section-title text-center">
-          <div class="floral-ornament floral-ornament-rose">♥ ⚘ ♥</div>
+          <div class="floral-ornament" style="color:var(--rose);">♥ ⚘ ♥</div>
           <h2>Ucapan &amp; Doa</h2>
           <p>Tinggalkan doa dan harapan untuk kami</p>
         </div>
@@ -1111,19 +1090,18 @@
     //  KONFIGURASI SUPABASE - GANTI DENGAN CREDENTIALS ANDA!
     // ============================================================
     const SUPABASE_URL = 'https://dsingkecblyqxcgxjwgp.supabase.co';
-    // PERBAIKI: huruf L besar, bukan l kecil!
     const SUPABASE_ANON_KEY = 'sb_publishable_z6zLAxCMOSPRKmD30Rdrgg_p8DJXVI3';
 
     console.log('🔗 Connecting to Supabase...');
     console.log('📡 URL:', SUPABASE_URL);
 
     // ============================================================
-    //  INISIALISASI SUPABASE - PERBAIKAN: ganti nama variabel
+    //  INISIALISASI SUPABASE
     // ============================================================
     const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
     // ============================================================
-    //  DATA PERNIKAHAN - DIPERBAIKI
+    //  DATA PERNIKAHAN
     // ============================================================
     const weddingData = {
       groomName: "Farid Ramadhona",
@@ -1136,7 +1114,6 @@
       bankName: "Bank BCA",
       accountNumber: "123 456 7890",
       accountHolder: "Nurhanifah & Farid",
-      // PERBAIKI: gunakan ekstensi huruf kecil untuk kompatibilitas
       galleryImages: [
         "images/1.jpg",
         "images/2.jpg",
@@ -1163,7 +1140,7 @@
 
     const guestName = getGuestName();
 
-    // Render nama - PERBAIKI: gunakan Nurhanifah
+    // Render nama
     document.getElementById('guestNameCover').innerHTML = guestName;
     document.getElementById('guestNameWelcome').innerHTML = guestName;
     document.getElementById('coverNames').innerHTML = weddingData.brideName + ' &amp; ' + weddingData.groomName;
@@ -1188,11 +1165,11 @@
     function renderComments() {
       if (comments.length === 0) {
         commentsList.innerHTML = `
-            <div style="text-align:center; color:#8a9aaa; padding:40px; font-family: 'Lateef', serif; font-size:1.1rem;">
-              <div style="font-size:2.4rem; margin-bottom:8px;">💐</div>
-              Belum ada ucapan. Jadilah yang pertama untuk Nurhanifah & Farid!
-            </div>
-          `;
+          <div style="text-align:center; color:#8a9aaa; padding:40px; font-family: 'Lateef', serif; font-size:1.1rem;">
+            <div style="font-size:2.4rem; margin-bottom:8px;">💐</div>
+            Belum ada ucapan. Jadilah yang pertama untuk Nurhanifah & Farid!
+          </div>
+        `;
         return;
       }
 
@@ -1204,15 +1181,15 @@
           c.time ? new Date(c.time).toLocaleString('id-ID') : 'Baru saja';
 
         html += `
-            <div class="comment-item">
-              <div class="avatar">${escapeHtml(initial)}</div>
-              <div class="body">
-                <div class="name">${escapeHtml(c.name || 'Anonim')} <span class="status">${statusLabel}</span></div>
-                <div class="text">${escapeHtml(c.text || '')}</div>
-                <div class="time">${escapeHtml(time)}</div>
-              </div>
+          <div class="comment-item">
+            <div class="avatar">${escapeHtml(initial)}</div>
+            <div class="body">
+              <div class="name">${escapeHtml(c.name || 'Anonim')} <span class="status">${statusLabel}</span></div>
+              <div class="text">${escapeHtml(c.text || '')}</div>
+              <div class="time">${escapeHtml(time)}</div>
             </div>
-          `;
+          </div>
+        `;
       });
       commentsList.innerHTML = html;
     }
@@ -1220,6 +1197,10 @@
     async function loadComments() {
       try {
         loadingState.style.display = 'block';
+        loadingState.innerHTML = `
+          <div class="spinner"></div>
+          <div>Memuat ucapan...</div>
+        `;
 
         const { data, error } = await supabaseClient
           .from('comments')
@@ -1235,11 +1216,11 @@
       } catch (error) {
         console.error('Error loading comments:', error);
         loadingState.innerHTML = `
-            <div style="text-align:center; color:#b91c1c; padding:20px;">
-              ⚠️ Gagal memuat komentar. Silakan refresh halaman.
-              <br><small style="color:#8a9aaa;">${error.message || ''}</small>
-            </div>
-          `;
+          <div style="text-align:center; color:#b91c1c; padding:20px;">
+            ⚠️ Gagal memuat komentar. Silakan refresh halaman.
+            <br><small style="color:#8a9aaa;">${error.message || ''}</small>
+          </div>
+        `;
       }
     }
 
@@ -1275,26 +1256,23 @@
     }
 
     // ============================================================
-    //  REALTIME SUBSCRIPTION - PERBAIKAN: gunakan supabaseClient
+    //  REALTIME SUBSCRIPTION
     // ============================================================
     const channel = supabaseClient
       .channel('comments-channel')
-      .on(
-        'postgres_changes', {
-          event: 'INSERT',
-          schema: 'public',
-          table: 'comments'
-        },
-        (payload) => {
-          if (payload.new) {
-            const exists = comments.some(c => c.id === payload.new.id);
-            if (!exists) {
-              comments.unshift(payload.new);
-              renderComments();
-            }
+      .on('postgres_changes', {
+        event: 'INSERT',
+        schema: 'public',
+        table: 'comments'
+      }, (payload) => {
+        if (payload.new) {
+          const exists = comments.some(c => c.id === payload.new.id);
+          if (!exists) {
+            comments.unshift(payload.new);
+            renderComments();
           }
         }
-      )
+      })
       .subscribe((status) => {
         console.log('Supabase subscription status:', status);
       });
@@ -1350,13 +1328,14 @@
     loadComments();
 
     // ============================================================
-    //  COVER
+    //  TOMBOL BUKA UNDANGAN
     // ============================================================
     const cover = document.getElementById('cover');
     const mainSite = document.getElementById('main-site');
     const btnOpen = document.getElementById('btnOpen');
 
     function openInvitation() {
+      console.log('🎉 Membuka undangan...');
       cover.classList.add('hidden');
       mainSite.classList.add('visible');
       document.body.style.overflow = 'auto';
@@ -1367,14 +1346,23 @@
         console.log('Autoplay blocked, user must interact first');
       });
       document.getElementById('musicBtn').textContent = '⏸️';
-
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     btnOpen.addEventListener('click', function(e) {
       e.preventDefault();
+      e.stopPropagation();
+      console.log('🔘 Tombol diklik!');
       openInvitation();
     });
+
+    btnOpen.addEventListener('touchstart', function(e) {
+      e.preventDefault();
+      console.log('📱 Tombol disentuh!');
+      openInvitation();
+    }, { passive: false });
+
+    console.log('✅ Tombol "Buka Undangan" siap digunakan!');
 
     // ============================================================
     //  COUNTDOWN
@@ -1397,7 +1385,7 @@
     setInterval(updateCountdown, 1000);
 
     // ============================================================
-    //  GALERI - PERBAIKI: gunakan weddingData.galleryImages
+    //  GALERI
     // ============================================================
     const galleryGrid = document.getElementById('galleryGrid');
     weddingData.galleryImages.forEach(src => {
@@ -1512,7 +1500,7 @@
       });
     });
 
-    console.log('✨ Undangan Pernikahan Nurhanifah & Farid siap!');
+    console.log('✅ Undangan Pernikahan Nurhanifah & Farid siap!');
     console.log('📅 Tanggal: 05 September 2026');
     console.log('👤 Tamu:', guestName);
   </script>
