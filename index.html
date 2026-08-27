@@ -105,6 +105,7 @@
       color: var(--navy);
     }
 
+    /* ===== ORNAMENTS ===== */
     .floral-ornament {
       font-family: 'Amiri', serif;
       font-size: 2.2rem;
@@ -269,6 +270,7 @@
       background: rgba(201, 168, 108, 0.15);
     }
 
+    /* ===== HERO ===== */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -339,6 +341,7 @@
       50% { transform: translateY(-8px) rotate(5deg); }
     }
 
+    /* ===== SECTION ===== */
     .section-title {
       margin-bottom: 40px;
     }
@@ -357,6 +360,7 @@
       font-size: 1.1rem;
     }
 
+    /* ===== COUPLE ===== */
     .couple-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -400,6 +404,7 @@
       font-family: 'Lateef', 'Amiri', serif;
     }
 
+    /* ===== EVENTS ===== */
     .event-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -431,6 +436,7 @@
       font-family: 'Cinzel', 'Marcellus', serif;
     }
 
+    /* ===== COUNTDOWN ===== */
     .countdown {
       display: flex;
       justify-content: center;
@@ -462,6 +468,7 @@
       font-family: 'Cinzel', 'Marcellus', serif;
     }
 
+    /* ===== GALLERY ===== */
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -484,6 +491,7 @@
       border-color: var(--gold);
     }
 
+    /* ===== RSVP ===== */
     .rsvp-form {
       max-width: 500px;
       margin: 0 auto;
@@ -519,6 +527,7 @@
       background: white;
     }
 
+    /* ===== COMMENTS ===== */
     .comments-list {
       max-width: 650px;
       margin: 20px auto 0;
@@ -595,6 +604,7 @@
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
+    /* ===== GIFT ===== */
     .gift-card {
       background: white;
       border-radius: 16px;
@@ -638,6 +648,7 @@
     }
     .gift-card .btn-copy:hover { background: #b8963a; }
 
+    /* ===== FOOTER ===== */
     .footer {
       background: var(--navy);
       color: rgba(255, 255, 255, 0.6);
@@ -654,6 +665,7 @@
       letter-spacing: 1px;
     }
 
+    /* ===== MUSIC BUTTON ===== */
     .music-btn {
       position: fixed;
       bottom: 90px;
@@ -675,6 +687,7 @@
     }
     .music-btn:hover { transform: scale(1.05); border-color: var(--gold-light); }
 
+    /* ===== BOTTOM NAV ===== */
     .bottom-nav {
       display: none;
       position: fixed;
@@ -715,6 +728,7 @@
       transform: translateY(0);
     }
 
+    /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .bottom-nav { display: flex; }
@@ -810,12 +824,12 @@
         <div class="couple-grid">
           <div class="couple-card">
             <div class="avatar">👰</div>
-            <h3>Nurhanifah</h3>
+            <h3 id="brideName">Nurhanifah</h3>
             <div class="parent">Putri dari Bapak Muhamad &amp; Ibu Surati</div>
           </div>
           <div class="couple-card">
             <div class="avatar">🤵</div>
-            <h3 id="groomName">Farid Ramadhona</h3>
+            <h3 id="groomName">Farid Romadhona</h3>
             <div class="parent">Putra dari Bapak Rahmat M Kapi &amp; Ibu Aenok Pauziyah</div>
           </div>
         </div>
@@ -986,21 +1000,18 @@
   <!-- Music Button -->
   <div class="music-btn" id="musicBtn" title="Putar musik">🎵</div>
   <audio id="bgMusic" loop>
+    <source src="maher-zain-baraka.mp3" type="audio/mpeg">
     <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
   </audio>
+
   <script>
     // ============================================================
-    //  🔑 KONFIGURASI SUPABASE - GANTI DENGAN KEY DARI DASHBOARD!
-    //  ============================================================
-    //  AMBIL DARI: Settings → API → Publishable Key
+    //  🔑 KONFIGURASI SUPABASE
     //  ============================================================
     const SUPABASE_URL = 'https://dsingkecblyqxcgxjwgp.supabase.co';
-    // ⚠️⚠️⚠️ GANTI INI DENGAN KEY DARI DASHBOARD ⚠️⚠️⚠️
-    const SUPABASE_ANON_KEY = 'sb_publishable_z6zlAxCMOSPRKmD30Rdrgg_p8DJXVI3';
+    const SUPABASE_ANON_KEY = 'sb_publishable_z6zLAxCMOSPRKmD30Rdrgg_p8DJXVI3';
 
     console.log('🚀 Memulai...');
-    console.log('📡 URL:', SUPABASE_URL);
-    console.log('🔑 Key:', SUPABASE_ANON_KEY ? SUPABASE_ANON_KEY.substring(0, 20) + '...' : 'KOSONG!');
 
     // ============================================================
     //  📦 INISIALISASI SUPABASE
@@ -1009,9 +1020,6 @@
     let isSupabaseConnected = false;
 
     try {
-      if (!SUPABASE_ANON_KEY || SUPABASE_ANON_KEY === '') {
-        throw new Error('API Key kosong! Silakan isi SUPABASE_ANON_KEY');
-      }
       supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
       isSupabaseConnected = true;
       console.log('✅ Supabase client berhasil dibuat!');
@@ -1024,8 +1032,8 @@
     //  📊 DATA PERNIKAHAN
     //  ============================================================
     const weddingData = {
-      groomName: "Farid",
-      brideName: "Hanifah",
+      groomName: "Farid Romadhona",
+      brideName: "Nurhanifah",
       groomParent: "Bapak Rahmat M Kapi & Ibu Aenok Pauziyah",
       brideParent: "Bapak Muhamad & Ibu Surati",
       weddingDate: "2026-09-05T09:00:00",
@@ -1057,10 +1065,11 @@
 
     const guestName = getGuestName();
 
+    // Render nama
     document.getElementById('guestNameCover').innerHTML = guestName;
     document.getElementById('guestNameWelcome').innerHTML = guestName;
-    document.getElementById('coverNames').innerHTML = weddingData.brideName + ' &amp; ' + weddingData.groomName;
-    document.getElementById('heroNames').innerHTML = weddingData.brideName + ' &amp; ' + weddingData.groomName;
+    document.getElementById('coverNames').innerHTML = 'Hanifah &amp; Farid';
+    document.getElementById('heroNames').innerHTML = 'Hanifah &amp; Farid';
     document.getElementById('brideName').textContent = weddingData.brideName;
     document.getElementById('groomName').textContent = weddingData.groomName;
 
@@ -1114,8 +1123,7 @@
       if (!isSupabaseConnected || !supabaseClient) {
         loadingState.innerHTML = `
           <div style="text-align:center; color:#b91c1c; padding:20px;">
-            ⚠️ Tidak terhubung ke database. Periksa API Key.
-            <br><small style="color:#8a9aaa;">Pastikan SUPABASE_ANON_KEY benar</small>
+            ⚠️ Tidak terhubung ke database.
           </div>
         `;
         return;
@@ -1145,7 +1153,6 @@
         loadingState.innerHTML = `
           <div style="text-align:center; color:#b91c1c; padding:20px;">
             ⚠️ Gagal memuat komentar: ${error.message}
-            <br><small style="color:#8a9aaa;">Periksa API Key di dashboard Supabase</small>
           </div>
         `;
       }
@@ -1454,6 +1461,8 @@
     //  ============================================================
     console.log('✅ ========================================');
     console.log('✅ Undangan Pernikahan Hanifah & Farid');
+    console.log('✅ Mempelai Wanita: Nurhanifah');
+    console.log('✅ Mempelai Pria: Farid Romadhona');
     console.log('✅ Tanggal: 05 September 2026');
     console.log('✅ Lokasi: Gedung Sanggita, Jakarta Timur');
     console.log('✅ Supabase:', isSupabaseConnected ? '🟢 TERHUBUNG' : '🔴 TIDAK TERHUBUNG');
