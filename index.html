@@ -15,28 +15,17 @@
   </script>
 
   <style>
-    /* ===== RESET & BASE ===== */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    /* ===== RESET ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Lateef', 'Amiri', 'Scheherazade New', serif;
       background: #faf9f7;
       color: #1e2a3a;
       line-height: 1.7;
-      scroll-behavior: smooth;
       overflow: hidden;
     }
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-    img {
-      max-width: 100%;
-      display: block;
-    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
 
     :root {
       --navy: #0B1F3A;
@@ -47,20 +36,10 @@
       --rose: #e8a0b4;
     }
 
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-    .section-padding {
-      padding: 60px 0;
-    }
-    .text-center {
-      text-align: center;
-    }
-    .bg-ivory {
-      background: var(--ivory);
-    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    .section-padding { padding: 60px 0; }
+    .text-center { text-align: center; }
+    .bg-ivory { background: var(--ivory); }
 
     .btn-primary {
       display: inline-block;
@@ -159,13 +138,11 @@
       opacity: 0.4;
     }
 
-    /* COVER */
+    /* ===== COVER ===== */
     #cover {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       background: linear-gradient(145deg, #0B1F3A 0%, #1a3350 100%);
       display: flex !important;
       align-items: center;
@@ -189,10 +166,7 @@
     }
     .cover-floral {
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      top: 0; left: 0; right: 0; bottom: 0;
       pointer-events: none;
       background:
         radial-gradient(circle at 10% 20%, rgba(201, 168, 108, 0.12) 0%, transparent 50%),
@@ -239,7 +213,7 @@
       letter-spacing: 1px;
     }
 
-    /* MAIN SITE */
+    /* ===== MAIN SITE ===== */
     #main-site {
       opacity: 0;
       transition: opacity 0.8s ease 0.3s;
@@ -250,12 +224,10 @@
       display: block;
     }
 
-    /* Navbar */
+    /* ===== NAVBAR ===== */
     .navbar {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       z-index: 999;
       padding: 12px 20px;
       background: rgba(11, 31, 58, 0.85);
@@ -292,6 +264,7 @@
       background: rgba(201, 168, 108, 0.15);
     }
 
+    /* ===== HERO ===== */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -350,7 +323,19 @@
       opacity: 0.5;
       color: var(--gold);
     }
+    .floating-flower {
+      display: inline-block;
+      animation: floatFlower 3s ease-in-out infinite;
+    }
+    .floating-flower:nth-child(2) { animation-delay: 0.5s; }
+    .floating-flower:nth-child(3) { animation-delay: 1s; }
 
+    @keyframes floatFlower {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-8px) rotate(5deg); }
+    }
+
+    /* ===== SECTION ===== */
     .section-title {
       margin-bottom: 40px;
     }
@@ -369,6 +354,7 @@
       font-size: 1.1rem;
     }
 
+    /* ===== COUPLE ===== */
     .couple-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -386,17 +372,12 @@
       transition: transform 0.3s ease;
       border-top: 3px solid var(--gold);
     }
-    .couple-card:hover {
-      transform: translateY(-6px);
-    }
+    .couple-card:hover { transform: translateY(-6px); }
     .couple-card .avatar {
-      width: 140px;
-      height: 140px;
+      width: 140px; height: 140px;
       border-radius: 50%;
-      object-fit: cover;
       margin: 0 auto 16px;
       border: 4px solid var(--gold);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
       background: #d4dce8;
       display: flex;
       align-items: center;
@@ -417,6 +398,7 @@
       font-family: 'Lateef', 'Amiri', serif;
     }
 
+    /* ===== EVENTS ===== */
     .event-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -431,9 +413,7 @@
       transition: transform 0.2s;
       border-bottom: 3px solid var(--gold);
     }
-    .event-card:hover {
-      transform: translateY(-4px);
-    }
+    .event-card:hover { transform: translateY(-4px); }
     .event-card h4 {
       font-family: 'Amiri', 'Scheherazade New', serif;
       font-size: 1.6rem;
@@ -450,6 +430,7 @@
       font-family: 'Cinzel', 'Marcellus', serif;
     }
 
+    /* ===== COUNTDOWN ===== */
     .countdown {
       display: flex;
       justify-content: center;
@@ -481,6 +462,7 @@
       font-family: 'Cinzel', 'Marcellus', serif;
     }
 
+    /* ===== GALLERY ===== */
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -503,6 +485,7 @@
       border-color: var(--gold);
     }
 
+    /* ===== RSVP & COMMENTS ===== */
     .rsvp-form {
       max-width: 500px;
       margin: 0 auto;
@@ -512,9 +495,7 @@
       box-shadow: var(--shadow);
       border-top: 3px solid var(--gold);
     }
-    .rsvp-form .form-group {
-      margin-bottom: 18px;
-    }
+    .rsvp-form .form-group { margin-bottom: 18px; }
     .rsvp-form label {
       display: block;
       font-size: 0.95rem;
@@ -524,9 +505,7 @@
       font-family: 'Amiri', 'Lateef', serif;
       letter-spacing: 1px;
     }
-    .rsvp-form input,
-    .rsvp-form select,
-    .rsvp-form textarea {
+    .rsvp-form input, .rsvp-form select, .rsvp-form textarea {
       width: 100%;
       padding: 12px 16px;
       border: 1.5px solid #e2e8f0;
@@ -536,14 +515,13 @@
       transition: border 0.2s;
       background: #fafbfc;
     }
-    .rsvp-form input:focus,
-    .rsvp-form select:focus,
-    .rsvp-form textarea:focus {
+    .rsvp-form input:focus, .rsvp-form select:focus, .rsvp-form textarea:focus {
       border-color: var(--gold);
       outline: none;
       background: white;
     }
 
+    /* ===== COMMENTS LIST ===== */
     .comments-list {
       max-width: 650px;
       margin: 20px auto 0;
@@ -561,8 +539,7 @@
       border-right: 3px solid var(--gold);
     }
     .comment-item .avatar {
-      width: 44px;
-      height: 44px;
+      width: 44px; height: 44px;
       border-radius: 50%;
       background: var(--gold);
       display: flex;
@@ -574,9 +551,7 @@
       font-size: 1.2rem;
       font-family: 'Amiri', serif;
     }
-    .comment-item .body {
-      flex: 1;
-    }
+    .comment-item .body { flex: 1; }
     .comment-item .name {
       font-weight: 700;
       font-size: 1rem;
@@ -613,15 +588,16 @@
     }
     .loading-state .spinner {
       display: inline-block;
-      width: 30px;
-      height: 30px;
+      width: 30px; height: 30px;
       border: 3px solid rgba(201, 168, 108, 0.2);
       border-radius: 50%;
       border-top-color: var(--gold);
       animation: spin 0.8s ease-in-out infinite;
       margin-bottom: 12px;
     }
+    @keyframes spin { to { transform: rotate(360deg); } }
 
+    /* ===== GIFT ===== */
     .gift-card {
       background: white;
       border-radius: 16px;
@@ -663,10 +639,9 @@
       font-size: 1.05rem;
       letter-spacing: 1px;
     }
-    .gift-card .btn-copy:hover {
-      background: #b8963a;
-    }
+    .gift-card .btn-copy:hover { background: #b8963a; }
 
+    /* ===== FOOTER ===== */
     .footer {
       background: var(--navy);
       color: rgba(255, 255, 255, 0.6);
@@ -683,6 +658,7 @@
       letter-spacing: 1px;
     }
 
+    /* ===== MUSIC BUTTON ===== */
     .music-btn {
       position: fixed;
       bottom: 90px;
@@ -692,8 +668,7 @@
       backdrop-filter: blur(6px);
       border: 1px solid var(--gold);
       border-radius: 50%;
-      width: 52px;
-      height: 52px;
+      width: 52px; height: 52px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -703,17 +678,13 @@
       transition: transform 0.2s;
       color: var(--gold-light);
     }
-    .music-btn:hover {
-      transform: scale(1.05);
-      border-color: var(--gold-light);
-    }
+    .music-btn:hover { transform: scale(1.05); border-color: var(--gold-light); }
 
+    /* ===== BOTTOM NAV ===== */
     .bottom-nav {
       display: none;
       position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
+      bottom: 0; left: 0; right: 0;
       background: rgba(11, 31, 58, 0.92);
       backdrop-filter: blur(12px);
       border-top: 1px solid rgba(201, 168, 108, 0.2);
@@ -735,62 +706,9 @@
       font-family: 'Cinzel', 'Marcellus', serif;
       letter-spacing: 1px;
     }
-    .bottom-nav a.active,
-    .bottom-nav a:hover {
+    .bottom-nav a.active, .bottom-nav a:hover {
       opacity: 1;
       color: var(--gold);
-    }
-
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
-      .bottom-nav {
-        display: flex;
-      }
-      .navbar {
-        padding: 8px 16px;
-      }
-      .hero {
-        padding: 100px 16px 60px;
-      }
-      .section-padding {
-        padding: 40px 0;
-      }
-      .countdown {
-        gap: 10px;
-      }
-      .countdown-item {
-        padding: 12px 16px;
-        min-width: 60px;
-      }
-      .countdown-item .num {
-        font-size: 1.8rem;
-      }
-      .gallery-grid {
-        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-      }
-      .cover-content h1 {
-        font-size: clamp(2.6rem, 10vw, 3.8rem);
-      }
-      .music-btn {
-        bottom: 80px;
-        right: 12px;
-        width: 46px;
-        height: 46px;
-        font-size: 1.3rem;
-      }
-    }
-    @media (max-width: 480px) {
-      .event-grid {
-        grid-template-columns: 1fr;
-      }
-      .couple-grid {
-        grid-template-columns: 1fr;
-      }
-      .btn-primary {
-        padding: 12px 32px;
-      }
     }
 
     .fade-up {
@@ -803,30 +721,24 @@
       transform: translateY(0);
     }
 
-    @keyframes floatFlower {
-      0%,
-      100% {
-        transform: translateY(0) rotate(0deg);
-      }
-      50% {
-        transform: translateY(-8px) rotate(5deg);
-      }
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .bottom-nav { display: flex; }
+      .navbar { padding: 8px 16px; }
+      .hero { padding: 100px 16px 60px; }
+      .section-padding { padding: 40px 0; }
+      .countdown { gap: 10px; }
+      .countdown-item { padding: 12px 16px; min-width: 60px; }
+      .countdown-item .num { font-size: 1.8rem; }
+      .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+      .cover-content h1 { font-size: clamp(2.6rem, 10vw, 3.8rem); }
+      .music-btn { bottom: 80px; right: 12px; width: 46px; height: 46px; font-size: 1.3rem; }
     }
-    .floating-flower {
-      display: inline-block;
-      animation: floatFlower 3s ease-in-out infinite;
-    }
-    .floating-flower:nth-child(2) {
-      animation-delay: 0.5s;
-    }
-    .floating-flower:nth-child(3) {
-      animation-delay: 1s;
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
+    @media (max-width: 480px) {
+      .event-grid { grid-template-columns: 1fr; }
+      .couple-grid { grid-template-columns: 1fr; }
+      .btn-primary { padding: 12px 32px; }
     }
   </style>
 </head>
@@ -1087,44 +999,66 @@
 
   <script>
     // ============================================================
-    //  KONFIGURASI SUPABASE - GANTI DENGAN CREDENTIALS ANDA!
+    //  CEK APAKAH TOMBOL BERFUNGSI - TANPA SUPABASE DULU!
     // ============================================================
-    const SUPABASE_URL = 'https://dsingkecblyqxcgxjwgp.supabase.co';
-    const SUPABASE_ANON_KEY = 'sb_publishable_z6zlAxCMOSPRKmD30Rdrgg_p8DJXVI3';
-
-    console.log('🔗 Connecting to Supabase...');
-    console.log('📡 URL:', SUPABASE_URL);
-
-    // ============================================================
-    //  INISIALISASI SUPABASE
-    // ============================================================
-    const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    // 1. Cek apakah elemen ditemukan
+    console.log('🔍 Mencari elemen...');
+    console.log('Cover:', document.getElementById('cover'));
+    console.log('Main Site:', document.getElementById('main-site'));
+    console.log('Tombol Buka:', document.getElementById('btnOpen'));
 
     // ============================================================
-    //  DATA PERNIKAHAN
+    //  2. FUNGSI BUKA UNDANGAN (Tanpa Supabase dulu)
     // ============================================================
-    const weddingData = {
-      groomName: "Farid Ramadhona",
-      brideName: "Nurhanifah",
-      groomParent: "Bapak Rahmat M Kapi & Ibu Aenok Pauziyah",
-      brideParent: "Bapak Muhamad & Ibu Surati",
-      weddingDate: "2026-09-05T09:00:00",
-      venue: "Gedung Sanggita Polri, Jakarta",
-      mapsUrl: "https://maps.google.com",
-      bankName: "Bank BCA",
-      accountNumber: "123 456 7890",
-      accountHolder: "Nurhanifah & Farid",
-      galleryImages: [
-        "images/1.jpg",
-        "images/2.jpg",
-        "images/4.png",
-        "images/5.jpg",
-        "images/6.jpg"
-      ]
-    };
+    const cover = document.getElementById('cover');
+    const mainSite = document.getElementById('main-site');
+    const btnOpen = document.getElementById('btnOpen');
+
+    function openInvitation() {
+      console.log('🎉 Membuka undangan...');
+      cover.classList.add('hidden');
+      mainSite.classList.add('visible');
+      document.body.style.overflow = 'auto';
+      
+      // Aktifkan animasi
+      document.querySelectorAll('.fade-up').forEach(el => el.classList.add('visible'));
+
+      // Putar musik
+      const music = document.getElementById('bgMusic');
+      music.play().catch(() => {
+        console.log('Autoplay blocked, user must interact first');
+      });
+      document.getElementById('musicBtn').textContent = '⏸️';
+      
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 
     // ============================================================
-    //  SISTEM NAMA TAMU
+    //  3. PASANG EVENT LISTENER (3 cara untuk memastikan)
+    // ============================================================
+    
+    // Cara 1: Click biasa
+    btnOpen.addEventListener('click', function(e) {
+      e.preventDefault();
+      console.log('🔘 Click event terdeteksi!');
+      openInvitation();
+    });
+
+    // Cara 2: Touch event untuk mobile
+    btnOpen.addEventListener('touchstart', function(e) {
+      e.preventDefault();
+      console.log('📱 Touch event terdeteksi!');
+      openInvitation();
+    }, { passive: false });
+
+    // Cara 3: Fallback dengan onclick attribute
+    btnOpen.setAttribute('onclick', 'openInvitation()');
+
+    console.log('✅ Tombol "Buka Undangan" siap!');
+    console.log('📌 Klik tombol dan lihat console untuk debug.');
+
+    // ============================================================
+    //  4. RENDER NAMA TAMU (Tanpa Supabase dulu)
     // ============================================================
     function getGuestName() {
       const params = new URLSearchParams(window.location.search);
@@ -1139,236 +1073,20 @@
     }
 
     const guestName = getGuestName();
-
-    // Render nama
     document.getElementById('guestNameCover').innerHTML = guestName;
     document.getElementById('guestNameWelcome').innerHTML = guestName;
-    document.getElementById('coverNames').innerHTML = weddingData.brideName + ' &amp; ' + weddingData.groomName;
-    document.getElementById('heroNames').innerHTML = weddingData.brideName + ' &amp; ' + weddingData.groomName;
-    document.getElementById('brideName').textContent = weddingData.brideName;
-    document.getElementById('groomName').textContent = weddingData.groomName;
+
+    // Nama pengantin
+    document.getElementById('coverNames').innerHTML = 'Nurhanifah &amp; Farid';
+    document.getElementById('heroNames').innerHTML = 'Nurhanifah &amp; Farid';
+    document.getElementById('brideName').textContent = 'Nurhanifah';
+    document.getElementById('groomName').textContent = 'Farid Ramadhona';
 
     // ============================================================
-    //  FUNGSI KOMENTAR DENGAN SUPABASE
-    // ============================================================
-    let comments = [];
-    const commentsList = document.getElementById('commentsList');
-    const commentFeedback = document.getElementById('commentFeedback');
-    const loadingState = document.getElementById('loadingState');
-
-    function escapeHtml(text) {
-      const div = document.createElement('div');
-      div.textContent = text;
-      return div.innerHTML;
-    }
-
-    function renderComments() {
-      if (comments.length === 0) {
-        commentsList.innerHTML = `
-          <div style="text-align:center; color:#8a9aaa; padding:40px; font-family: 'Lateef', serif; font-size:1.1rem;">
-            <div style="font-size:2.4rem; margin-bottom:8px;">💐</div>
-            Belum ada ucapan. Jadilah yang pertama untuk Nurhanifah & Farid!
-          </div>
-        `;
-        return;
-      }
-
-      let html = '';
-      comments.forEach(c => {
-        const initial = c.name ? c.name.charAt(0).toUpperCase() : '?';
-        const statusLabel = c.is_rsvp ? '♥ RSVP' : (c.status === 'Hadir' ? '✅ Hadir' : '❌ Tidak hadir');
-        const time = c.created_at ? new Date(c.created_at).toLocaleString('id-ID') :
-          c.time ? new Date(c.time).toLocaleString('id-ID') : 'Baru saja';
-
-        html += `
-          <div class="comment-item">
-            <div class="avatar">${escapeHtml(initial)}</div>
-            <div class="body">
-              <div class="name">${escapeHtml(c.name || 'Anonim')} <span class="status">${statusLabel}</span></div>
-              <div class="text">${escapeHtml(c.text || '')}</div>
-              <div class="time">${escapeHtml(time)}</div>
-            </div>
-          </div>
-        `;
-      });
-      commentsList.innerHTML = html;
-    }
-
-    async function loadComments() {
-      try {
-        loadingState.style.display = 'block';
-        loadingState.innerHTML = `
-          <div class="spinner"></div>
-          <div>Memuat ucapan...</div>
-        `;
-
-        const { data, error } = await supabaseClient
-          .from('comments')
-          .select('*')
-          .order('created_at', { ascending: false });
-
-        if (error) throw error;
-
-        comments = data || [];
-        renderComments();
-        loadingState.style.display = 'none';
-
-      } catch (error) {
-        console.error('Error loading comments:', error);
-        loadingState.innerHTML = `
-          <div style="text-align:center; color:#b91c1c; padding:20px;">
-            ⚠️ Gagal memuat komentar. Silakan refresh halaman.
-            <br><small style="color:#8a9aaa;">${error.message || ''}</small>
-          </div>
-        `;
-      }
-    }
-
-    async function addComment(name, status, text, isRsvp = false) {
-      if (!name || !text) {
-        commentFeedback.innerHTML = '<span style="color:#b91c1c;">⚠️ Nama dan ucapan harus diisi</span>';
-        return false;
-      }
-
-      try {
-        const { data, error } = await supabaseClient
-          .from('comments')
-          .insert([{
-            name: name.trim(),
-            status: status || 'Hadir',
-            text: text.trim(),
-            is_rsvp: isRsvp,
-            created_at: new Date().toISOString()
-          }])
-          .select();
-
-        if (error) throw error;
-
-        commentFeedback.innerHTML = '<span style="color:var(--gold);">✅ Ucapan terkirim!</span>';
-        setTimeout(() => { commentFeedback.innerHTML = ''; }, 3000);
-        return true;
-
-      } catch (error) {
-        console.error('Error adding comment:', error);
-        commentFeedback.innerHTML = `<span style="color:#b91c1c;">⚠️ Gagal mengirim: ${error.message || 'Coba lagi'}</span>`;
-        return false;
-      }
-    }
-
-    // ============================================================
-    //  REALTIME SUBSCRIPTION
-    // ============================================================
-    const channel = supabaseClient
-      .channel('comments-channel')
-      .on('postgres_changes', {
-        event: 'INSERT',
-        schema: 'public',
-        table: 'comments'
-      }, (payload) => {
-        if (payload.new) {
-          const exists = comments.some(c => c.id === payload.new.id);
-          if (!exists) {
-            comments.unshift(payload.new);
-            renderComments();
-          }
-        }
-      })
-      .subscribe((status) => {
-        console.log('Supabase subscription status:', status);
-      });
-
-    // ============================================================
-    //  RSVP
-    // ============================================================
-    const rsvpSubmit = document.getElementById('rsvpSubmit');
-    const rsvpFeedback = document.getElementById('rsvpFeedback');
-
-    rsvpSubmit.addEventListener('click', async () => {
-      const name = document.getElementById('rsvpName').value.trim();
-      const attend = document.getElementById('rsvpAttend').value;
-      const guests = document.getElementById('rsvpGuests').value;
-      const message = document.getElementById('rsvpMessage').value.trim();
-
-      if (!name) {
-        rsvpFeedback.innerHTML = '<span style="color:#b91c1c;">⚠️ Nama harus diisi</span>';
-        return;
-      }
-
-      const success = await addComment(name, attend, message || 'Hadir dalam acara', true);
-
-      if (success) {
-        rsvpFeedback.innerHTML = '<span style="color:var(--gold);">✅ Konfirmasi berhasil dikirim. Terima kasih!</span>';
-        document.getElementById('rsvpName').value = '';
-        document.getElementById('rsvpGuests').value = '1';
-        document.getElementById('rsvpMessage').value = '';
-        setTimeout(() => { rsvpFeedback.innerHTML = ''; }, 4000);
-      }
-    });
-
-    // ============================================================
-    //  KOMENTAR
-    // ============================================================
-    document.getElementById('commentSubmit').addEventListener('click', async () => {
-      const name = document.getElementById('commentName').value.trim();
-      const text = document.getElementById('commentText').value.trim();
-
-      if (!name || !text) {
-        commentFeedback.innerHTML = '<span style="color:#b91c1c;">⚠️ Nama dan ucapan harus diisi</span>';
-        return;
-      }
-
-      await addComment(name, 'Hadir', text);
-      document.getElementById('commentName').value = '';
-      document.getElementById('commentText').value = '';
-    });
-
-    // ============================================================
-    //  LOAD KOMENTAR
-    // ============================================================
-    loadComments();
-
-    // ============================================================
-    //  TOMBOL BUKA UNDANGAN
-    // ============================================================
-    const cover = document.getElementById('cover');
-    const mainSite = document.getElementById('main-site');
-    const btnOpen = document.getElementById('btnOpen');
-
-    function openInvitation() {
-      console.log('🎉 Membuka undangan...');
-      cover.classList.add('hidden');
-      mainSite.classList.add('visible');
-      document.body.style.overflow = 'auto';
-      document.querySelectorAll('.fade-up').forEach(el => el.classList.add('visible'));
-
-      const music = document.getElementById('bgMusic');
-      music.play().catch(() => {
-        console.log('Autoplay blocked, user must interact first');
-      });
-      document.getElementById('musicBtn').textContent = '⏸️';
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    btnOpen.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      console.log('🔘 Tombol diklik!');
-      openInvitation();
-    });
-
-    btnOpen.addEventListener('touchstart', function(e) {
-      e.preventDefault();
-      console.log('📱 Tombol disentuh!');
-      openInvitation();
-    }, { passive: false });
-
-    console.log('✅ Tombol "Buka Undangan" siap digunakan!');
-
-    // ============================================================
-    //  COUNTDOWN
+    //  5. COUNTDOWN
     // ============================================================
     function updateCountdown() {
-      const target = new Date(weddingData.weddingDate).getTime();
+      const target = new Date('2026-09-05T09:00:00').getTime();
       const now = new Date().getTime();
       let diff = target - now;
       if (diff < 0) diff = 0;
@@ -1385,10 +1103,15 @@
     setInterval(updateCountdown, 1000);
 
     // ============================================================
-    //  GALERI
+    //  6. GALERI (Placeholder)
     // ============================================================
     const galleryGrid = document.getElementById('galleryGrid');
-    weddingData.galleryImages.forEach(src => {
+    const galleryImages = [
+      "images/1.jpg", "images/2.jpg", "images/4.png",
+      "images/5.jpg", "images/6.jpg"
+    ];
+
+    galleryImages.forEach(src => {
       const img = document.createElement('img');
       img.src = src;
       img.alt = 'Gallery Photo';
@@ -1413,10 +1136,10 @@
     });
 
     // ============================================================
-    //  GIFT
+    //  7. GIFT - SALIN REKENING
     // ============================================================
     document.getElementById('copyBtn').addEventListener('click', () => {
-      const account = weddingData.accountNumber;
+      const account = '123 456 7890';
       navigator.clipboard.writeText(account).then(() => {
         document.getElementById('copyFeedback').textContent = '✅ Nomor rekening berhasil disalin!';
         setTimeout(() => { document.getElementById('copyFeedback').textContent = ''; }, 3000);
@@ -1433,7 +1156,7 @@
     });
 
     // ============================================================
-    //  MUSIK
+    //  8. MUSIK
     // ============================================================
     const musicBtn = document.getElementById('musicBtn');
     const bgMusic = document.getElementById('bgMusic');
@@ -1454,7 +1177,7 @@
     });
 
     // ============================================================
-    //  SCROLL ANIMASI
+    //  9. SCROLL ANIMASI
     // ============================================================
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -1470,7 +1193,7 @@
     });
 
     // ============================================================
-    //  NAVIGASI
+    //  10. NAVIGASI
     // ============================================================
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
@@ -1500,10 +1223,8 @@
       });
     });
 
-    console.log('✅ Undangan Pernikahan Nurhanifah & Farid siap!');
-    console.log('📅 Tanggal: 05 September 2026');
+    console.log('✅ Website siap!');
     console.log('👤 Tamu:', guestName);
   </script>
-
 </body>
 </html>
